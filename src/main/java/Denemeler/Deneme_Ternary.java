@@ -1,4 +1,4 @@
-package d8stringmanipulations13092024.Denemeler;
+package Denemeler;
 
 public class Deneme_Ternary {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package d8stringmanipulations13092024.Denemeler;
+package Denemeler;
 
 import java.util.Scanner;
 
