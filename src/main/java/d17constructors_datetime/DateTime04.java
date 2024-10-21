@@ -1,7 +1,5 @@
 package d17constructors_datetime;
 
-package d17constructors_datetime;
-
 import java.time.LocalDate;
 import java.util.Scanner;
 

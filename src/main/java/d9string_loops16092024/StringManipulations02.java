@@ -16,6 +16,8 @@ public class StringManipulations02 {
         //lastIndexOf("y")  ==>
 
 
+
+
         if (s.indexOf("y") == s.lastIndexOf("y")) {
             System.out.print("y");
         }

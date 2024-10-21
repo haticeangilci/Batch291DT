@@ -52,59 +52,5 @@ public class Sets01 {
         hs.add("Tuba");
         hs.add("Onur");
         System.out.println(hs); //[Kerem, Sinan, Tuba, Onur]
-
-        hs.add("Kerem"); //tekrarli eleman hata vermez, uzerine yazar
-        System.out.println(hs); //[Kerem, Sinan, Tuba, Onur]
-
-        hs.add(null);
-        System.out.println(hs); //[Kerem, null, Sinan, Tuba, Onur]
-
-        //------------------------
-        //LinkedHashSet nasil olusturulur?
-
-        LinkedHashSet<Integer> lhs = new LinkedHashSet<>();
-
-        lhs.add(14);
-        lhs.add(19);
-        lhs.add(7);
-        lhs.add(1);
-        lhs.add(null);
-        System.out.println(lhs); //[14, 19, 7, 1, null] - insertion order - ekleme sirasi
-
-        LinkedHashSet<Integer> ls = new LinkedHashSet<>();
-        ls.add(14);
-        ls.add(19);
-        ls.add(17);
-        ls.add(11);
-        System.out.println(ls); //[14, 19, 17, 11]
-
-        //retainAll() metodu, bir koleksiyondaki öğelerin başka bir koleksiyonla kesişimini
-        // (yani her iki koleksiyonda da bulunan öğeleri-ortak) bulmak için kullanılır.
-
-        lhs.retainAll(ls);
-        System.out.println(lhs); //[14, 19]
-        System.out.println(ls); //[14, 19, 17, 11]
-
-        //ODEV: Farkli olanlari bulan bir metot var mi?
-
-        //-----------------------------
-        //TreeSet nasil olusturulur?
-        TreeSet<Character> ts = new TreeSet<>();
-        ts.add('G');
-        ts.add('A');
-        ts.add('Z');
-        ts.add('R');
-        ts.add('U');
-        //ts.add(null); HATA, null koyamazsiniz cunku null'in dogal siralamasi yoktur
-        System.out.println(ts); //[A, G, R, U, Z] - natural order - A'dan Z'ye
-
-        //subset() belirli bir aralıktaki elemanları içeren yeni bir küme oluşturmak için kullanılır.
-        //subSet() methodu, belirtilen aralıkta bulunan elemanlardan oluşan bir sorted set alt kümesi
-        // oluşturur. Bu nedenle, subSet() yöntemini kullanmak için,
-        // SortedSet türünden bir değişken oluşturmanız gerekir.
-
-        SortedSet<Character> ss = ts.subSet('G', 'U');
-        System.out.println(ss); //[G, R]
-
     }
 }
