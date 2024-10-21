@@ -3,7 +3,7 @@ package d27exceptions;
 public class E02 {
     public static void main(String[] args) {
 
-        //2) NumberFormatException : Bir metnin sayisal bir deger olarak donusturulememesi durumunda olusur
+            //2) NumberFormatException : Bir metnin sayisal bir deger olarak donusturulememesi durumunda olusur
         String s = "1234a";
         convertStringToInt(s);
 

@@ -5,7 +5,7 @@ import java.util.*;
 public class Queue01 {
     public static void main(String[] args) {
 
-        /* Java’da Queue, verilerin belirli bir düzen içinde saklandığı ve işlendiği bir veri yapısıdır.
+        /* removeFirst(), verilerin belirli bir düzen içinde saklandığı ve işlendiği bir veri yapısıdır.
         Ilk giren ilk çıkar (FIFO-first in first out) prensibine dayanır, yani ilk eklenen obje ilk çıkarılır.
         Queue, sıralı işlemler ve verilerin işlenmesi için kullanılır. Araya eleman eklemek mümkün değildir.
 
