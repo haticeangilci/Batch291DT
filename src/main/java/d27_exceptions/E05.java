@@ -10,14 +10,21 @@ public class E05 {
         getCharFromString(s, a, b);
 
     } //main disi
+    //1.yol
 
     public static void getCharFromString(String s, int a, int b) {
 
-        int idx = a / b;
-        char ch = s.charAt(idx);
-        System.out.println(ch);
+        try {
+            int idx = a / b;
+            char ch = s.charAt(idx);
+            System.out.println(ch);
+        } catch (ArithmeticException e) {
+            System.out.println("Sıfıra bölme yapılamaz"+e.getMessage());
+        }catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Olmayan index kullandınız "+e.getCause());
+        }
 
     }
-
+    //2.yol
 
 }

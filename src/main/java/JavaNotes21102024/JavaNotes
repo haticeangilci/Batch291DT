@@ -1,4 +1,4 @@
-/*Non-primitive Data types:
+Non-primitive Data types:
     Ornegin String class non-primitive bir data type'dir.
     Not 1: Uretilen her bir class ayni zamanda bir "non-primitive" data type dir.
      Bu yuzden "non-primitive" data type'lar sinirsiz sayidadir denilebilir.
@@ -13,7 +13,7 @@ Soru: primitive ve non-primitive data type'lari arasindaki farklar nelerdir? (İ
        "non-primitive" leri Java ve kod yazanlar uretebilir, sinirsiz sayidadir.
     4) "primitive" ler memory'de data type'larina gore sabit boyutta bellek kullanir
        "non-primitive" ler icin Java memory'de buyuklugune gore degisen boyutlarda bellek kullanabilir  */
-*Java primitive data tiplerine yeni ozellikler(methodlar) ekleyerek yeni bir yapi olusturdu. Bu yapiya wrapper class JavaNotes1.
+*Java primitive data tiplerine yeni ozellikler(methodlar) ekleyerek yeni bir yapi olusturdu. Bu yapiya wrapper class denir.
         Wrapper class’lar, Java'nın primitive veri türlerini object olarak  temsil etmek için kullandığı class’lardir. Bu özellik, primitive veri türlerini koleksiyonlarda
         (örneğin ArrayList gibi) kullanabilmek için oldukça kullanışlıdır, çünkü Java'da koleksiyonlar
         sadece Object referans türlerini kabul eder. Ayrica en onemlisi girdigimiz veriler uzerinde
@@ -60,7 +60,7 @@ Java'da Scanner class'i, kullanıcıdan veya farklı bir kaynaktan girdi almanı
 /*Java'da kütüphane, belirli bir işlevselliği sağlayan class'lar, interface'ler ve metotlar koleksiyonudur. Bu kütüphaneler, Java geliştiricilerinin daha hızlı ve etkili bir şekilde programlama   yapabilmelerine olanak tanır. Java kütüphaneleri genellikle .jar (Java Archive) dosyaları olarak dağıtılır.
         Java'nın standart kütüphanesi (Java Standard Library), Java Development Kit (JDK) ile birlikte gelir  ve dilin temel yapısını oluşturur. Java'da bir kütüphaneyi kullanabilmek için import anahtar kelimesi  ile belirtilen class'lari projenize eklemeniz gerekir.*/
         //------------------------------------------------------------
-Sayisal primitive data tiplerinin birbirine donusturulmesine Type Casting denir  Numeric (sayisal) Data Type ==> byte - short - int - long - float - double 
+Sayisal primitive data tiplerinin birbirine donusturulmesine Type Casting denir  Numeric (sayisal) Data Type ==> byte - short - int - long - float - double
         /*Not 1: Kucuk data type'larini buyuk data type'larina cevirmeyi Java otomatik olarak yapabilir.
         Bu isleme "AutoWidening" (Otomatik genisletme) denir*/
         /*Not 2: Buyuk data type'larini kucuk data type'larina cevirmek riskli bir istir. Veri kaybi olusabilir.        Java bu isi otomatik olarak yapmaz. Bu islemi kod yazanlar yapar.
@@ -94,7 +94,7 @@ Sayisal primitive data tiplerinin birbirine donusturulmesine Type Casting denir 
 //genel kullanimda, 3'ten fazla durum varsa switch kullaniriz.(best practise)
 //toLowerCase() metodu, bir String içindeki tüm harfleri küçük harfe
 // dönüştürmek için kullanılır.
-/*Not : switch condition parantezi icine 1) String 2) int 3) byte 4) short 5) char kullanabilirsiniz 
+/*Not : switch condition parantezi icine 1) String 2) int 3) byte 4) short 5) char kullanabilirsiniz
 switch condition parantezi icine 1) long 2) boolean 3) float 4) double kullanilmaz */
 Yeni switch ifadesi, daha esnek ve güçlü bir yapı sunarak, geleneksel switch-case
 yapısının daha temiz ve ifade edilebilir hale getirilmesini sağlar.
@@ -174,24 +174,24 @@ For (Baslangic Degeri; Loop Calisma Kurali; Artirma/Eksiltme) {
         int enddingIndex = a.indexOf(".");//9
         String companyName = a.substring(startingIndex, enddingIndex);
         System.out.println(companyName);
-      let indexOfU = str.indexOf("u"); // 'u' karakterinin ilk bulunduğu yerconsole.log(indexOfU); // Çıktı:24```  
-###2. `lastIndexOf()`  
-`lastIndexOf()` metodu, dizge içerisinde belirtilen son eşleşmenin dizinini (son konumunu) döndürür. Eğer eşleşme bulunamazsa, -1 değeri döndürülür.  
-**Kullanım örneği:**  
-```javascriptlet str = "JavaScript ile programlama öğreniyorum";  
-let lastIndexOfU = str.lastIndexOf("u"); // 'u' karakterinin son bulunduğu yerconsole.log(lastIndexOfU); // Çıktı:33```  
-###3. Diğer Karakterler İçin ÖrneklerŞimdi `y` karakteri için aynı işlemleri yapalım:  
-**`indexOf("y")`:**  
+      let indexOfU = str.indexOf("u"); // 'u' karakterinin ilk bulunduğu yerconsole.log(indexOfU); // Çıktı:24```
+###2. `lastIndexOf()`
+`lastIndexOf()` metodu, dizge içerisinde belirtilen son eşleşmenin dizinini (son konumunu) döndürür. Eğer eşleşme bulunamazsa, -1 değeri döndürülür.
+**Kullanım örneği:**
+```javascriptlet str = "JavaScript ile programlama öğreniyorum";
+let lastIndexOfU = str.lastIndexOf("u"); // 'u' karakterinin son bulunduğu yerconsole.log(lastIndexOfU); // Çıktı:33```
+###3. Diğer Karakterler İçin ÖrneklerŞimdi `y` karakteri için aynı işlemleri yapalım:
+**`indexOf("y")`:**
 ```javascriptlet indexOfY = str.indexOf("y"); // 'y' karakterinin ilk bulunduğu yerconsole.log(indexOfY); // Çıktı:10``
-**`lastIndexOf("y")`:**  
-```javascriptlet lastIndexOfY = str.lastIndexOf("y"); // 'y' karakterinin son bulunduğu yerconsole.log(lastIndexOfY); // Çıktı:35```  
-### ÖzetAşağıda yukarıdaki tüm örneklerin bir arada olduğu bir kod parçası bulunmaktadır:  
-```javascriptlet str = "JavaScript ile programlama öğreniyorum";  
-let indexOfU = str.indexOf("u");  
-let lastIndexOfU = str.lastIndexOf("u");  
-let indexOfY = str.indexOf("y");  
-let lastIndexOfY = str.lastIndexOf("y");  
-console.log(`indexOf("u"): ${indexOfU}`); //24console.log(`lastIndexOf("u"): ${lastIndexOfU}`); //33console.log(`indexOf("y"): ${indexOfY}`); //10console.log(`lastIndexOf("y"): ${lastIndexOfY}`); //35```  
+**`lastIndexOf("y")`:**
+```javascriptlet lastIndexOfY = str.lastIndexOf("y"); // 'y' karakterinin son bulunduğu yerconsole.log(lastIndexOfY); // Çıktı:35```
+### ÖzetAşağıda yukarıdaki tüm örneklerin bir arada olduğu bir kod parçası bulunmaktadır:
+```javascriptlet str = "JavaScript ile programlama öğreniyorum";
+let indexOfU = str.indexOf("u");
+let lastIndexOfU = str.lastIndexOf("u");
+let indexOfY = str.indexOf("y");
+let lastIndexOfY = str.lastIndexOf("y");
+console.log(`indexOf("u"): ${indexOfU}`); //24console.log(`lastIndexOf("u"): ${lastIndexOfU}`); //33console.log(`indexOf("y"): ${indexOfY}`); //10console.log(`lastIndexOf("y"): ${lastIndexOfY}`); //35```
 Bu kodu çalıştırarak, dizgede `u` ve `y` karakterlerinin ilk ve son konumlarını öğrenebilirsiniz. Eğer başka bir konuda yardım istiyorsanız, lütfen sorun!
 //Not: isEmpty() metodu sadece hicligi kontrol eder (true verir).
 //isBlank() metodu ise hem hicligi hem de space’i kontrol eder(true verir)
@@ -435,7 +435,7 @@ Array’ler object’tir. Bu yuzden
         ages.add(12);
         ages.add(5);
         System.out.println(ages); //[9, 12, 5]
-        
+
 //List'te araya eleman eklemek icin index numarasini yazariz
 ages.add(1, 28);
   System.out.println(ages); //[9, 28, 12, 5]
@@ -504,7 +504,7 @@ int[][] a = new int[3][2]; //3 distaki, 2 icteki eleman sayisi
 Cunku "for each" döngüsü ile bir koleksiyonu veya diziyi dolaşırken, koleksiyonun veya dizinin
  boyutu değişirse, bu, döngünün tutarlılığını bozar. Özellikle, eleman kaldırıldığında, döngü hâlâ eski boyutu dikkate alacak, bu da dizi sınırlarını aşabilir veya yanlış elemanlara erişebilir. Ayrıca, diğer elemanların dizin numaraları değişecektir, bu da yanıltıcı sonuçlara yol açabilir.
 ---------------------------------------------------------------------------------------------------------------------------
-Concurrent Modification Exception - Eşzamanlı Değişiklik İstisnası olusur. Yani bir dongu sayisi for each tarafindan ornegin 4 olarak ayarlanmissa, siz bir elemani silince o 4 uzerinden devam etmeye calisacagi icin tutarsizlik olusur 
+Concurrent Modification Exception - Eşzamanlı Değişiklik İstisnası olusur. Yani bir dongu sayisi for each tarafindan ornegin 4 olarak ayarlanmissa, siz bir elemani silince o 4 uzerinden devam etmeye calisacagi icin tutarsizlik olusur
 /Collections.sort(nums); //sort() yapmak icin 1.yol:Collections yardimci class'i kullandik        nums.sort(null); //sort() yapmak icin 2.yol: ArrayList icindekini kullanmak
  int minDiff = nums.get(1) - nums.get(0); //12-10 = 2 min fark olarak kabul ettik
         //[10, 12, 19, 23]
@@ -630,7 +630,7 @@ this.brand = brand; //Bu class'taki brand degerini kullanma, ben sana parametre 
         /* Pass by Reference (Referans ile Geçiş):
         Java’da genel olarak “pass by reference” kullanılmaz. Bunda degisken ve object’lerin adresleri direkt methoda gonderilir.
         Kopya yoktur.Method’a adres yollaninca method, adresi kullanarak orjinal degere ulasir ve degeri degistirebilir.
-         Bu yaklasimda hem adres hem de orjinal veri degisebilir.       
+         Bu yaklasimda hem adres hem de orjinal veri degisebilir.
         Dikkat : Java da Object ile calisirken (heap memory’de), Object’in referansı(adresi) degismez ama   bazi Object’lerin orjinal içeriği degisebilir (Mutable-Değiştirilebilir- Nesneler : ArrayList, HashMap,StringBuilder)
         (Immutable-Değişmez- Nesneler: Integer, String gibi Wrapper Clas’lar,ENUM)
          Peki Java bunu neden boyle yapar? (Pass by reference kullanımına gore)
@@ -700,7 +700,7 @@ minusDays() : Bir LocalDate veya LocalDateTime nesnesinden belirtilen gün sayı
         "mm" "minute" demektir. "MM" "month" demektir.
         dd-MM-yyyy ==> gun - ay - yil
         MMM ==> Aug
-        MMMM ==> August 
+        MMMM ==> August
 //DateTimeFormatter, tarih ve saat nesnelerini "metin" yani String olarak biçimlendirmenize ve metni tarih ve saat nesnelerine çözmenize olanak tanır.
         //ofPattern() metodu, belirli bir kalıba (pattern) göre tarih ve zaman verilerini
         // biçimlendirmek için kullanılır.
@@ -710,7 +710,7 @@ minusDays() : Bir LocalDate veya LocalDateTime nesnesinden belirtilen gün sayı
         String formattedTime = dtf1.format(myCurrentTime);
         System.out.println(formattedTime); //11:14 ÖÖ
 //ZoneId, zaman dilimi veya coğrafi bölge bilgisini temsil eder ve tarih/saat işlemlerinde bu bilginin kullanılmasını sağlar.
-//https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html     
+//https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
 //Tokyo'da ayin kaci?
         LocalDate dateInTokyo = LocalDate.now(ZoneId.of("Asia/Tokyo"));
         System.out.println(dateInTokyo); //2024-10-04 //Arastirma Odevi: Java bu bilgiyi internetten mi cekiyor?
@@ -867,8 +867,89 @@ System.out.println("main method ici");
     1. Inheritance - Miras Alma
     2. Polymorphism - Çok Biçimlilik
     3. Encapsulation - Kapsülleme
-    4. Abstraction - Soyutlama
-     //-------------------
+    4. Abstraction – Soyutlama
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+Java DateTime hesaplaması;
+Java'da tarih ve saat hesaplamaları yaparken, Java'nın kullandığı tarih ve saat bilgileri, işletim sisteminin sağladığı zaman bilgisinden alınır. Java, zaman ve tarih bilgilerini işletim sisteminin saatinden alır ve o anki sisteme göre bu bilgileri işler.Java'da tarih ve saat hesaplamaları için kullanılan bazı sınıflar şunlardır:1. **java.time.LocalDate** ve **java.time.LocalTime**: Tarih ve saati, sistemin yerel saatine göre alır, ancak saat dilimi bilgisi içermez.
+2. **java.time.LocalDateTime**: Sistemden alınan yerel tarih ve saati, saat dilimi olmadan temsil eder.
+3. **java.time.ZonedDateTime**: Saat dilimi bilgisi ile birlikte tarih ve saati alır. Bu, dünya çapında farklı saat dilimleriyle çalışırken kullanılır.
+4. **System.currentTimeMillis()**: 1 Ocak 1970'ten itibaren milisaniye cinsinden geçen süreyi verir ve bu değer de işletim sisteminin saatine dayanır.
+5. **java.util.Date** ve **java.util.Calendar** (eski yöntemler): İşletim sisteminden alınan zamana dayalı olarak tarih ve saat bilgilerini tutar.
+Yani, Java çalıştığı cihazın yerel tarih ve saat bilgisini işletim sistemi aracılığıyla alır ve bu bilgiyi farklı sınıflar aracılığıyla manipüle eder.
+Java'da **ZoneId** sınıfı, dünya üzerindeki farklı saat dilimlerini temsil eder ve bu saat dilimleri belirlenirken *IANA (Internet Assigned Numbers Authority) Time Zone Database* kullanılır. Bu veri tabanı, dünya çapındaki saat dilimlerini standartlaştırır ve her dilim bir kimlik ile tanımlanır.
+### Java'da ZoneId Dilimlerinin Belirlenme Şekli:
+1. *IANA Time Zone Database*:
+   Java, zaman dilimlerini IANA tarafından sağlanan zaman dilimi veritabanından alır. Bu veritabanında her zaman dilimi, coğrafi bir bölge adı ve bazen de özel bir tanım ile belirlenir.
+Örneğin:
+   - "Europe/Istanbul"
+   - "America/New_York"
+   - "Asia/Tokyo"
+
+   Bu bölgeler, coğrafi olarak belirlenmiş zaman dilimlerine karşılık gelir ve IANA tarafından düzenli olarak güncellenir. IANA veritabanı, yaz saati uygulamaları (DST) ve zaman dilimi değişikliklerini de içerir, bu sayede güncel zaman dilimi bilgileri sağlanır.
+2. *ISO 8601 Standardına Dayalı UTC Ofsetleri*:
+   Saat dilimleri ayrıca UTC'ye (Coordinated Universal Time) göre pozitif veya negatif bir ofsetle de belirtilebilir. Örneğin:
+   - UTC+02:00
+   - UTC-05:00
+
+   Bu, saat diliminin UTC'ye göre farkını temsil eder ve bazı durumlarda sabit bir ofset olarak kullanılabilir.
+3. *Yaz Saati Uygulaması (Daylight Saving Time - DST)*:
+--------------------------------------------------------------------------------------------------------------------------------------
+Bazı ZoneId dilimlerinde yaz saati uygulaması olabilir. IANA veri tabanında bu bilgiler de yer alır ve Java, belirli bir zaman diliminde yaz saati uygulaması geçerli olup olmadığını otomatik olarak tanır ve saatleri buna göre ayarlar.
+4. *Sistem Zaman Dilimi*:
+   Java uygulamaları çalıştıkları sistemin saat dilimini varsayılan olarak kullanır. Örneğin, eğer bir Java uygulaması Türkiye'de çalıştırılıyorsa, varsayılan saat dilimi "Europe/Istanbul" olacaktır.
+### Java'da ZoneId Kullanımı Örnekleri:
+java
+// Sistemin varsayılan saat dilimi
+ZoneId defaultZone = ZoneId.systemDefault();
+System.out.println("Varsayılan saat dilimi: " + defaultZone);
+// Spesifik bir saat dilimi
+ZoneId istanbulZone = ZoneId.of("Europe/Istanbul");
+System.out.println("İstanbul saat dilimi: " + istanbulZone);
+// UTC Ofseti ile saat dilimi
+ZoneId utcPlus2 = ZoneId.of("UTC+02:00");
+System.out.println("UTC+02:00 saat dilimi: " + utcPlus2);
+### Özetle:
+Java'daki **ZoneId** dilimleri, dünya genelindeki saat dilimlerini standart bir şekilde tanımlayan IANA Time Zone Database'e dayanır ve bu dilimler coğrafi bölgelere göre veya UTC'ye göre ofsetlerle belirlenir. Ayrıca yaz saati uygulamaları gibi detaylar da bu veri tabanında yer alır ve Java tarafından otomatik olarak yönetilir.
+--------------------------------------------------------------------------------------------------------------------------------------
+Java'da **StringBuilder** sınıfı, özellikle *performans* ve *bellek verimliliği* nedeniyle kullanılır. Bunun nedeni, Java'daki String nesnelerinin *değişmez (immutable)* olmasıdır. Yani bir kez oluşturulduktan sonra bir String nesnesi değiştirilemez. Bu durum, çok sayıda string işlemi yapıldığında performans kaybına ve gereksiz bellek kullanımına neden olabilir.
+### String ve StringBuilder Farkı:
+1. **String nesneleri değişmezdir (immutable):
+   String ile her yeni ekleme, birleştirme veya değiştirme işlemi yapıldığında yeni bir String nesnesi oluşturulur. Bu süreç şu şekilde işler:
+   - Mevcut String birleştirilir veya değiştirilir.
+   - Yeni bir String nesnesi oluşturulur.
+   - Eski String nesnesi bellekte atıl durumda kalır (GC - Garbage Collection tarafından temizlenene kadar).
+   Bu durum, çok sayıda string manipülasyonu içeren döngüler veya işlemler yapıldığında, büyük miktarda gereksiz nesne oluşturulmasına ve performans kaybına yol açar.
+2. **StringBuilder değiştirilebilir (mutable) bir sınıftır**:
+   StringBuilder, oluşturulan bir string üzerinde değişiklik yapmaya olanak tanır, yani aynı nesne üzerinde işlemler yapılır. Yeni nesneler oluşturulmaz. Bu da performansı artırır ve bellekteki yükü hafifletir.
+### StringBuilder Kullanımının Avantajları:
+1. *Verimlilik*:
+   Çok sayıda string birleştirme veya değiştirme işlemi yapıyorsanız, StringBuilder bu işlemleri değişmez (immutable) nesneler üretmeden, mevcut nesne üzerinde gerçekleştirir. Bu, daha az bellek kullanımına ve daha hızlı işlemlere olanak tanır.
+2. *Daha Az Bellek Tüketimi*:
+   StringBuilder, büyüyen bir tampon (buffer) kullanarak string işlemlerini aynı bellek alanında tutar. Yeni nesneler oluşturulmadığı için bellekte gereksiz yük oluşmaz.
+3. *Daha Hızlı İşlem*:
+   StringBuilder ile yapılan string işlemleri, String kullanarak yapılan işlemlerden çok daha hızlıdır, çünkü her adımda yeni nesneler yaratılmaz ve mevcut nesne üzerinde işlem yapılır.
+### Örnek:
+java
+// String ile birleştirme
+String result = "";
+for (int i = 0; i < 1000; i++) {
+    result += "test"; // Her adımda yeni bir String nesnesi oluşturuluyor.
+}
+// StringBuilder ile birleştirme
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i < 1000; i++) {
+    sb.append("test"); // Aynı StringBuilder nesnesi üzerinde işlem yapılıyor.
+}
+String finalResult = sb.toString(); // Sonuç String'e dönüştürülüyor.
+
+Bu örnekte, StringBuilder kullanmak, özellikle döngüde çok sayıda string birleştirme işlemi yapıldığında daha verimli olur.
+### StringBuffer ile Farkı:
+StringBuilder, StringBuffer'ın benzeri olsa da, *thread-safe* (çoklu iş parçacığı) değildir. Eğer kodunuzda birden fazla iş parçacığı aynı string verisini değiştirmeye çalışmıyorsa, StringBuilder kullanmak daha performanslıdır. StringBuffer ise senkronizasyon sağlar ancak bu, performans açısından bir miktar maliyetlidir.
+### Sonuç:
+Java'da **StringBuilder**, özellikle string manipülasyonları için çok daha hızlı ve bellek açısından verimli bir çözüm sağlar. String nesnelerinin değişmez doğasından kaynaklanan dezavantajları aşmak için tercih edilir ve bu nedenle sık sık, çok sayıda string işlemi yapılması gereken durumlarda kullanılır.
+
+     //-----------------------------------------------------------------------------------------------------------------------------------
     /*1.Inheritance, OOP’nin dort temel ozelliginin 1.sidir.    Ozellikleri bir class'tan diğer class'lara alan bir kavramdır.*/
     /*Bunun Java daki karsiligi sudur: Siz bir class olusturacaksiniz ama daha once olusturulmus
     bir class sizin istediginiz ozelliklerin bircogunu kapsiyor.
@@ -1475,103 +1556,170 @@ https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html */
 // geçersiz bir indekse erişmeye çalışıldığında ortaya çıkan bir istisna türüdür.
 //4) ArrayIndexOutOfBoundsException: Bir dizi elemanına erişilmeye çalışıldığında,
 // dizi boyutunu aşan bir indeks kullanıldığında meydana gelir.
---------------------------------------------------------------------------------------------
-Java DateTime hesaplaması;
-Java'da tarih ve saat hesaplamaları yaparken, Java'nın kullandığı tarih ve saat bilgileri, işletim sisteminin sağladığı zaman bilgisinden alınır. Java, zaman ve tarih bilgilerini işletim sisteminin saatinden alır ve o anki sisteme göre bu bilgileri işler.Java'da tarih ve saat hesaplamaları için kullanılan bazı sınıflar şunlardır:1. **java.time.LocalDate** ve **java.time.LocalTime**: Tarih ve saati, sistemin yerel saatine göre alır, ancak saat dilimi bilgisi içermez.   
-2. **java.time.LocalDateTime**: Sistemden alınan yerel tarih ve saati, saat dilimi olmadan temsil eder.
-3. **java.time.ZonedDateTime**: Saat dilimi bilgisi ile birlikte tarih ve saati alır. Bu, dünya çapında farklı saat dilimleriyle çalışırken kullanılır.
-4. **System.currentTimeMillis()**: 1 Ocak 1970'ten itibaren milisaniye cinsinden geçen süreyi verir ve bu değer de işletim sisteminin saatine dayanır.
-5. **java.util.Date** ve **java.util.Calendar** (eski yöntemler): İşletim sisteminden alınan zamana dayalı olarak tarih ve saat bilgilerini tutar.
-Yani, Java çalıştığı cihazın yerel tarih ve saat bilgisini işletim sistemi aracılığıyla alır ve bu bilgiyi farklı sınıflar aracılığıyla manipüle eder.
-Java'da **ZoneId** sınıfı, dünya üzerindeki farklı saat dilimlerini temsil eder ve bu saat dilimleri belirlenirken *IANA (Internet Assigned Numbers Authority) Time Zone Database* kullanılır. Bu veri tabanı, dünya çapındaki saat dilimlerini standartlaştırır ve her dilim bir kimlik ile tanımlanır.
-### Java'da ZoneId Dilimlerinin Belirlenme Şekli:
-1. *IANA Time Zone Database*:  
-   Java, zaman dilimlerini IANA tarafından sağlanan zaman dilimi veritabanından alır. Bu veritabanında her zaman dilimi, coğrafi bir bölge adı ve bazen de özel bir tanım ile belirlenir. 
-Örneğin:
-   - "Europe/Istanbul"
-   - "America/New_York"
-   - "Asia/Tokyo"
+//-------------------------------------------------------------------------------------------------------------------------------------------
+//d28_exception_enum:
+/*Java'da enum (enumeration - sıralama), bir dizi sabit değeri temsil etmek için kullanılan özel bir class türüdür.
+   enum yapısı, belirli bir değer kümesini temsil eden sabitleri (constants) tanımlamak için kullanılır.
+   Degisme ihtimali olmayan verileri tutarlar.(ay, gun isimleri gibi) ve buyuk harfle yazilirlar.
+enum'un temel avantajları şunlardır:
+    Tip Güvenliği: enum ile tanımlanan bir değişken, sadece belirtilen enum değerlerinden birine sahip olabilir.
+    Bu, geçersiz değerlerin atanmasını engeller.
+    Kod Okunabilirliği: enum kullanımı, kodun okunabilirliğini artırır, çünkü anlamlı isimlere sahip
+    sabitleri kullanabilirsiniz.
+    Kod tekrarını azaltır: Enumlar, aynı sabit değerleri birden çok kez tanımlamayı önler.
+    Bu, kod tekrarını azaltır. Ve dis kaynaklara bagimliligi kaldirir.
+    Ornegin illeri app'inizde saklarsiniz, gerektiginde cagirir kullanirsiniz.
+    Bir siteden cekmezsiniz. Cunku site cokmus olabilir*/
+    //---------------------------------------------------------
+    /* Expected 0 arguments but found 3 hatası,Sehirler enum yapısında. Her bir enum değeri için 3 argüman sağladık
+     (int, String, String). Bu argümanları kabul eden bir yapıcı (constructor) tanımlamanız gerekiyor.
+    ama once 3 tane variable olusturalim  private, bir değişkenin yalnızca class'in içinden erişilebilir olmasını sağlar.
+    Bu, değişkenin dışarıdan erişilmesini ve değiştirilmesini önler.(encapsulation)  final, bir değişkenin değerinin değiştirilemeyeceğini belirtir.  Bu, plaka kodunun yalnızca bir kez ayarlanmasını sağlar.
+    Açıklama: Enum'lar, önceden tanımlanmış sabit değerleri temsil eden yapılardir.
+    Bu nedenle, plaka kodu, yalnızca enum'un içinden ayarlanmalı ve değiştirilmelidir.
+    Dışarıdan erişilmesi veya değiştirilmesi, enum'un tutarlılığını bozabilir.*/
 
-   Bu bölgeler, coğrafi olarak belirlenmiş zaman dilimlerine karşılık gelir ve IANA tarafından düzenli olarak güncellenir. IANA veritabanı, yaz saati uygulamaları (DST) ve zaman dilimi değişikliklerini de içerir, bu sayede güncel zaman dilimi bilgileri sağlanır.
-2. *ISO 8601 Standardına Dayalı UTC Ofsetleri*:  
-   Saat dilimleri ayrıca UTC'ye (Coordinated Universal Time) göre pozitif veya negatif bir ofsetle de belirtilebilir. Örneğin:
-   - UTC+02:00
-   - UTC-05:00
+    //----------------------------------------------------------------------------
+       1) enum'daki datalar sabittir
+    2) enum'dan new keywordu ile yeni bir object olusturamazsiniz
+    3) Cunku enum icine koymus oldugunuz her bir sabit data bu classtan olusturulmus bir object mantigi ile calisir
+    4) enum icerisine koymus oldugumuz her bir sabit default olarak public static ve final'dir.
+    (Burada iller kastediliyor-enum tanımlarken bu anahtar kelimeleri sabitlerin önüne yazmak gerekmez
+    ve yazılamaz da; dilin sözdizimi bunu desteklemez)
+    5) Bu nedenle enum icindeki her bir sabit dataya enum ismi yazarak ulasabilirsiniz
+    6) enum'daki constructor yeni bir object olusturmak icin degil, enum'in icindeki her bir sabit
+    datanin icindeki variable'lari baslatmak icin kullanilir
+   --------------------------------------------------------------------------------------------
+//5) NullPointerException:(bos isaretcisi) Null degerindeki bir variable referans olarak kullanildiginda olusur
+//null degeriyle length() methodunu kullanmayiniz
+//6) IllegalArgumentException, bir metodun geçersiz bir argüman aldığında oluşan bir hata türüdür.
+//Girdigimiz yasi konsola yazdiran bir method olusturalim
 
-   Bu, saat diliminin UTC'ye göre farkını temsil eder ve bazı durumlarda sabit bir ofset olarak kullanılabilir.
-3. *Yaz Saati Uygulaması (Daylight Saving Time - DST)*:  
---------------------------------------------------------------------------------------------------------------------------------------   
-Bazı ZoneId dilimlerinde yaz saati uygulaması olabilir. IANA veri tabanında bu bilgiler de yer alır ve Java, belirli bir zaman diliminde yaz saati uygulaması geçerli olup olmadığını otomatik olarak tanır ve saatleri buna göre ayarlar.
-4. *Sistem Zaman Dilimi*:  
-   Java uygulamaları çalıştıkları sistemin saat dilimini varsayılan olarak kullanır. Örneğin, eğer bir Java uygulaması Türkiye'de çalıştırılıyorsa, varsayılan saat dilimi "Europe/Istanbul" olacaktır.
-### Java'da ZoneId Kullanımı Örnekleri:
-java
-// Sistemin varsayılan saat dilimi
-ZoneId defaultZone = ZoneId.systemDefault();
-System.out.println("Varsayılan saat dilimi: " + defaultZone);
-// Spesifik bir saat dilimi
-ZoneId istanbulZone = ZoneId.of("Europe/Istanbul");
-System.out.println("İstanbul saat dilimi: " + istanbulZone);
-// UTC Ofseti ile saat dilimi
-ZoneId utcPlus2 = ZoneId.of("UTC+02:00");
-System.out.println("UTC+02:00 saat dilimi: " + utcPlus2);
-### Özetle:
-Java'daki **ZoneId** dilimleri, dünya genelindeki saat dilimlerini standart bir şekilde tanımlayan IANA Time Zone Database'e dayanır ve bu dilimler coğrafi bölgelere göre veya UTC'ye göre ofsetlerle belirlenir. Ayrıca yaz saati uygulamaları gibi detaylar da bu veri tabanında yer alır ve Java tarafından otomatik olarak yönetilir.
---------------------------------------------------------------------------------------------------------------------------------------
-Java'da **StringBuilder** sınıfı, özellikle *performans* ve *bellek verimliliği* nedeniyle kullanılır. Bunun nedeni, Java'daki String nesnelerinin *değişmez (immutable)* olmasıdır. Yani bir kez oluşturulduktan sonra bir String nesnesi değiştirilemez. Bu durum, çok sayıda string işlemi yapıldığında performans kaybına ve gereksiz bellek kullanımına neden olabilir.
-### String ve StringBuilder Farkı:
-1. **String nesneleri değişmezdir (immutable):  
-   String ile her yeni ekleme, birleştirme veya değiştirme işlemi yapıldığında yeni bir String nesnesi oluşturulur. Bu süreç şu şekilde işler:
-   - Mevcut String birleştirilir veya değiştirilir.
-   - Yeni bir String nesnesi oluşturulur.
-   - Eski String nesnesi bellekte atıl durumda kalır (GC - Garbage Collection tarafından temizlenene kadar).
-   Bu durum, çok sayıda string manipülasyonu içeren döngüler veya işlemler yapıldığında, büyük miktarda gereksiz nesne oluşturulmasına ve performans kaybına yol açar.
-2. **StringBuilder değiştirilebilir (mutable) bir sınıftır**:  
-   StringBuilder, oluşturulan bir string üzerinde değişiklik yapmaya olanak tanır, yani aynı nesne üzerinde işlemler yapılır. Yeni nesneler oluşturulmaz. Bu da performansı artırır ve bellekteki yükü hafifletir. 
-### StringBuilder Kullanımının Avantajları:
-1. *Verimlilik*:  
-   Çok sayıda string birleştirme veya değiştirme işlemi yapıyorsanız, StringBuilder bu işlemleri değişmez (immutable) nesneler üretmeden, mevcut nesne üzerinde gerçekleştirir. Bu, daha az bellek kullanımına ve daha hızlı işlemlere olanak tanır.
-2. *Daha Az Bellek Tüketimi*:  
-   StringBuilder, büyüyen bir tampon (buffer) kullanarak string işlemlerini aynı bellek alanında tutar. Yeni nesneler oluşturulmadığı için bellekte gereksiz yük oluşmaz.
-3. *Daha Hızlı İşlem*:  
-   StringBuilder ile yapılan string işlemleri, String kullanarak yapılan işlemlerden çok daha hızlıdır, çünkü her adımda yeni nesneler yaratılmaz ve mevcut nesne üzerinde işlem yapılır.
-### Örnek:
-java
-// String ile birleştirme
-String result = "";
-for (int i = 0; i < 1000; i++) {
-    result += "test"; // Her adımda yeni bir String nesnesi oluşturuluyor.
-}
-// StringBuilder ile birleştirme 
-StringBuilder sb = new StringBuilder();
-for (int i = 0; i < 1000; i++) {
-    sb.append("test"); // Aynı StringBuilder nesnesi üzerinde işlem yapılıyor.
-}
-String finalResult = sb.toString(); // Sonuç String'e dönüştürülüyor.
+//Exception olustugunda bunu ilan eder ve geri cekilirsiniz, buna da throw exception denir.
+// try-catch kullanmazsiniz.Burda programin durmasi kesinlikle isteniyordur.
+/*1)Run butonuna bastiktan sonra console'da alinan Exception'lara Runtime Exception denir
+  ArithmeticException, NullPointerException vs...
+  RunTime Exception’lara Unchecked Exception’da denir. (run butonundan once kontrol edilmemis)
 
-Bu örnekte, StringBuilder kullanmak, özellikle döngüde çok sayıda string birleştirme işlemi yapıldığında daha verimli olur.
-### StringBuffer ile Farkı:
-StringBuilder, StringBuffer'ın benzeri olsa da, *thread-safe* (çoklu iş parçacığı) değildir. Eğer kodunuzda birden fazla iş parçacığı aynı string verisini değiştirmeye çalışmıyorsa, StringBuilder kullanmak daha performanslıdır. StringBuffer ise senkronizasyon sağlar ancak bu, performans açısından bir miktar maliyetlidir.
-### Sonuç:
-Java'da **StringBuilder**, özellikle string manipülasyonları için çok daha hızlı ve bellek açısından verimli bir çözüm sağlar. String nesnelerinin değişmez doğasından kaynaklanan dezavantajları aşmak için tercih edilir ve bu nedenle sık sık, çok sayıda string işlemi yapılması gereken durumlarda kullanılır.
+2) Code yazarken kirmizi alt cizgi seklinde alinan Exceptionlar’da vardir. Bunlara da Compile Time Exception
+denir,  Compile Time Exception’lara Checked Exception’da denir.(run butonuna basmadan once kontrol var)*/
+
+//---------------
+/*Aciklama: FileInputStream kullanacagiz. Bir class'tir.FileInputStream sınıfı, Java'da dosyaları bayt (byte) bazlı
+okumak için kullanılır. Bu sınıf, Java'nın java.io paketinin bir parçasıdır.
+Genellikle metin dosyaları, resimler, ses dosyaları vb. dosya türlerini okumak için kullanılır.
+Not: ASCII tablosundaki "A" ya da herhangi bir başka karakter 1 byte'a eşittir.*/
+/*
+interview sorusu
+throw ile throws arasindaki farklar nelerdir?
+1) throw method body’si icinde, throws ise method parantezinden sonra kullanilir
+2) throw method body’si icinde istenilen yerde istenildigi kadar yazilip kullanilabilir
+   throws ise method signature’dan hemen sonra ve sadece bir kere yazilir
+3) throw’dan sonra new keyword’u ve constructor kullanarak object olusturulur
+   throws’dan sonra ise sadece Exception class ismi yazilir
+4) throw belli sartlar icin Exception firlatmada kullanilir (age negatif olamaz diye biz sart koyduk)
+    throws ise bir methodun belli bir Exception’u firlatabileceğini belirtmek icin kullanilir
+    (olusabilecek bir hataya karsi yazilir)
+*/
+
+//read() metodu dosyadan bir bayt (byte) okur (tam sayı değerini-0-255 arasında)
+//Dosyada 'A' karakteri varsa, read() metodu 65 değerini döndürecektir.
+//Dosyada 'a' karakteri varsa, read() metodu 97 değerini döndürecektir.
+//-1 değeri, dosya sonu (EOF - End of File) olarak kabul edilir.
+//read, dosya sonuna ulaşıldığında -1 değerini döndürur.
+//Not: Bir onceki uygulamamizda method signature icine exception eklemesi yaptik.
+// Bu seferde try-catch kullanalim
+
+/*
+1) FileNotFoundException ve IOException Compile Time Exception'lardir. Yani kodu yazarken hata aliriz.
+2) IOException Class, FileNotFoundException class'in parent'idir yani
+    istenirse FileNotFoundException yerine IOException'da kullanilabilir
+3) IOException ve FileNotFoundException beraber kullanilacak ise FileNotFoundException üstte olmalidir
+ */
+//finally
+        /*
+        1) finally bloğu genellikle;
+         a) Kaynakların serbest bırakılması :  (veritabani baglantisinin kesilmesi, close() methodu ile),
+             Özellikle eski Java versiyonlarında (Java 7 öncesi), veritabanı bağlantıları gibi kaynaklar
+             manuel olarak kapatılmalıydı. Bu tür kaynaklar, uzun süre açık bırakılırsa sistemde gereksiz
+             yere yer kaplar ve potansiyel performans sorunlarına neden olabilir. Java 7 sonrasi otomatiklesti ( try-with-resources ifadesi ile)
+         b) Dosyaların kapatılması :  (az once dosya baglantisi yapmistik.  fis.close(); ile kapatilabilirdi)
+            Dosyaları okuma veya yazma işlemi bittikten sonra kapatmak gereklidir. Aksi halde, dosya kolları
+             gereksiz yere sistemde yer kaplar.
+         c) Her durumda çalıştırılması gereken temizleme işlemleri :
+         (Bazı işlemler, başarılı olsun ya da olmasın, belirli bir sürecin sonunda her zaman yapılmalıdır.
+        Örneğin, bir log dosyasına her işlemin başlangıç ve bitiş zamanını kaydetmek gibi. BufferedWriter ile)
+         finally icin bir senaryo olusturalim; a/b bolumu ile bir index bulalim ve bu index'i kullanarak
+         Array'deki elemani bulalim
+         */
+        // Coklu finally block kullanilamaz
+        //java da try + bir catch, try + birden fazla catch, try + catch + finally,
+        // try + finally kullanilabilir.
+//İşgörüşmesi notu olabilir sık sık okumalıyız...
+    /*Java'da final, finally ve finalize() terimleri farklı amaçlarla kullanılan üç farklı kavramı temsil eder.
+	final:
+    Değişkenler İçin: final keyword'uyle tanımlanan bir variable sadece bir kez değer alabilir.
+    Bu, değişkenin değerinin sonradan değiştirilemeyeceği anlamına gelir. Yani, bu değişken sabittir (constant)
+    Metotlar İçin: final keyword'uyle tanımlanan bir metot, child class'lar tarafından
+    override edilemez.
+    Class'lar İçin: final keyword'uyle tanımlanan bir class, genişletilemez (extends edilemez).
+    Yani bu class'in child'i olmaz.
+	finally:
+    finally bloğu, try-catch yapısının bir parçasıdır. Bu blok, try bloğunda bir istisna oluşsa da
+    oluşmasa da her zaman çalıştırılır.Genellikle kaynakların serbest bırakılması,
+    dosyaların kapatılması gibi temizleme işlemleri için kullanılır.
+	finalize():
+    Bu, Object sınıfında tanımlanan bir metottur ve varsayılan olarak hiçbir işlem yapmaz.
+    Bir nesne bellekten kaldırılmadan hemen önce Garbage Collector (Çöp Toplayıcı) tarafından
+    otomatik olarak çağrılır. Genellikle dış kaynakların serbest bırakılması için kullanılır,
+    ancak modern Java uygulamalarında kullanımı önerilmez.*/
+/*
+Kendi istisna (Custom Exception class) class'larinizi oluşturabilirsiniz.
+Bunun için genellikle Exception class'ini ya da daha spesifik bir child sınıfı genişleterek (extends) yeni bir class oluşturursunuz.
+
+Kendi exception class'larinizi oluşturmanız için birkaç neden vardır:
+
+1- Özelleştirilmiş İstisna Mesajları: Özel istisna sınıflarınızla, belirli bir hata durumu için daha anlamlı ve detaylı hata mesajları oluşturabilirsiniz.
+
+2-Daha İyi Hata Yönetimi: Özel istisnalar sayesinde hataları daha spesifik olarak yakalayıp, uygun şekilde yönetebilirsiniz.
+(ornegin okul app'inde negatif yas girilmesinde hata firlatabilirsiniz)
+
+3- İş Kurallarını Tanımlama: Bazı iş kuralları, standart Java istisnalarıyla doğrudan temsil edilemez.
+
+Bu tür kurallar için özel istisnalar oluşturarak, iş kurallarınızı daha iyi tanımlayabilirsiniz.
+(Java icin negatif veya pozitif yas girilmesinin farki yoktur. Sifira bolme olsaydi vardir) */
+
+/*4- Daha Anlamlı Loglama: Özelleştirilmiş istisna sınıflarınızla, hatanın neden kaynaklandığına dair
+daha spesifik bilgilere sahip olabilir ve bu bilgileri loglarda saklayabilirsiniz.
+
+Örnek olarak, belirli bir yaşın altındaki kullanıcıların sisteme kaydolamayacağı bir uygulamanız varsa,
+bu durumu belirtmek için özel bir istisna oluşturabilirsiniz*/
+
+//Exception yazarsak compile time(checked exceptions) cesidinde bir istisna olusur.(FileNotFoundException gibi)
+// RuntimeException yazsaydik run time cesidinde olusurdu.(ArrayIndexOutOfBoundsException)
+// RuntimeException(unchecked) Exception'ın bir alt sınıfıdir.
+
+//-----------------------------------------------------------------------
+//Ogrenci notu sifirdan kucuk veya yuzden buyuk girilemez senaryosu uzerinden gidelim.
+//Let's go through the scenario where the student's grade cannot be entered less than zero or greater than zero.
 --------------------------------------------------------------------------------------------------------------------------------------
 Java'da *immutable* (değişmez) terimi, bir nesnenin oluşturulduktan sonra iç durumunun değiştirilemeyeceğini ifade eder. Yani, immutable bir nesne bir kez oluşturulduğunda, o nesnenin durumu (alanları veya özellikleri) sabit kalır ve değiştirilmesi mümkün olmaz.
 ### Immutable Nesnelerin Özellikleri:
-1. *Nesne oluşturulduktan sonra değiştirilemez*:  
+1. *Nesne oluşturulduktan sonra değiştirilemez*:
    Immutable bir nesneye bir kez veri atandıktan sonra, bu veri değiştirilemez. Bunun anlamı, bir immutable nesnenin iç durumu her zaman sabit kalır.
-2. *Yeni değerler için yeni nesneler oluşturulur*:  
+2. *Yeni değerler için yeni nesneler oluşturulur*:
    Eğer immutable bir nesnenin içeriğini değiştirmek istiyorsanız, o nesnenin yeni bir kopyası veya başka bir nesne oluşturmanız gerekir. Bu, mevcut nesnenin üzerinde değişiklik yapmadan yeni bir nesne üretmek anlamına gelir.
-3. *Thread-safe* (İş parçacığı güvenliği):  
+3. *Thread-safe* (İş parçacığı güvenliği):
    Immutable nesneler thread-safe'dir çünkü bir iş parçacığı bu nesneye erişirken, başka bir iş parçacığı bu nesneyi değiştiremeyeceğinden, veri tutarlılığı açısından herhangi bir risk oluşturmaz.
 ### Java'da Immutable Bir Sınıfın Özellikleri:
 Bir sınıfı immutable yapmak için şu kurallara uyulmalıdır:
-1. **Tüm alanlar (fields) final olmalıdır**:  
+1. **Tüm alanlar (fields) final olmalıdır**:
    Alanlar, nesne oluşturulduktan sonra değiştirilememesi için final olarak tanımlanmalıdır.
-2. **Sınıf final olmalıdır**:  
+2. **Sınıf final olmalıdır**:
    Sınıfın kendisi final olarak tanımlanmalıdır ki, başka sınıflar bu sınıfı genişletip (extend edip) değiştiremesin.
-3. *Alanlar (fields) yalnızca constructor (yapıcı) ile atanmalıdır*:  
+3. *Alanlar (fields) yalnızca constructor (yapıcı) ile atanmalıdır*:
    Nesne oluşturulurken tüm alanlar constructor aracılığıyla atanmalı ve daha sonra değiştirilmemelidir.
-4. *Getter metotları, derin kopya yapmalıdır*:  
+4. *Getter metotları, derin kopya yapmalıdır*:
    Eğer sınıf bir referans tipi içeriyorsa, bu tipteki verileri döndüren getter metotları, orijinal verinin kopyasını vermelidir, böylece dışarıdan müdahaleye kapalı olur.
 ### Örnek: Immutable Bir Sınıf java
 public final class ImmutablePerson {
@@ -1590,20 +1738,20 @@ public final class ImmutablePerson {
         return age;
     }
 }
-Yukarıdaki örnekte ImmutablePerson sınıfı immutable bir sınıftır. Tüm alanlar final ve private olarak tanımlanmıştır ve sadece constructor ile atanır. Nesne oluşturulduktan sonra, name ve age değerleri değiştirilemez. 
+Yukarıdaki örnekte ImmutablePerson sınıfı immutable bir sınıftır. Tüm alanlar final ve private olarak tanımlanmıştır ve sadece constructor ile atanır. Nesne oluşturulduktan sonra, name ve age değerleri değiştirilemez.
 ### Java'da Immutable Nesne Örnekleri:
-1. **String**:  
-   Java'da en bilinen immutable sınıf String sınıfıdır. String nesneleri oluşturulduktan sonra değiştirilemez. Eğer bir String üzerinde bir işlem yaparsanız (örneğin, bir string birleştirme), yeni bir String nesnesi oluşturulur, eski String nesnesi değişmez.   
+1. **String**:
+   Java'da en bilinen immutable sınıf String sınıfıdır. String nesneleri oluşturulduktan sonra değiştirilemez. Eğer bir String üzerinde bir işlem yaparsanız (örneğin, bir string birleştirme), yeni bir String nesnesi oluşturulur, eski String nesnesi değişmez.
    Örneğin:
    java
    String s1 = "Hello";
    String s2 = s1.concat(" World"); // Yeni bir String oluşturulur
    System.out.println(s1); // s1 hala "Hello"
-   System.out.println(s2); // s2 "Hello World" olur   
-2. *Wrapper Sınıfları*:  
+   System.out.println(s2); // s2 "Hello World" olur
+2. *Wrapper Sınıfları*:
    Java'nın Integer, Boolean, Double gibi temel veri tiplerini sarmalayan sınıflar da immutable'dır. Bir Integer nesnesi oluşturulduktan sonra değeri değiştirilemez.
 ### Immutable Olmanın Avantajları:
-1. *Thread-Safe*: Immutable nesneler iş parçacığı güvenliği sunar, çünkü bir iş parçacığı bu nesneyi kullanırken diğer iş parçacıkları nesneyi değiştiremez.   
+1. *Thread-Safe*: Immutable nesneler iş parçacığı güvenliği sunar, çünkü bir iş parçacığı bu nesneyi kullanırken diğer iş parçacıkları nesneyi değiştiremez.
 2. *Kolay Yönetim*: Immutable nesneler, kodun daha anlaşılır ve daha kolay yönetilir olmasını sağlar, çünkü bir kez oluşturulduktan sonra değiştirilmeyeceklerini bilirsiniz.
 3. *Güvenlik*: Immutable nesneler, verilerin istemeden ya da kötü amaçlı bir şekilde değiştirilmesini engeller. Bu, özellikle güvenlik gerektiren uygulamalarda büyük avantaj sağlar.
 ### Dezavantajları:
@@ -1613,6 +1761,8 @@ Programlama : Bilgisayar biliminde, değişmez nesne, oluşturulduktan sonra dur
 Felsefe : Daha geniş anlamda değişmezlik, zaman içinde değişmeyen veya değiştirilemeyen bir şeyi, örneğin ebedi gerçekler veya ilkeler fikrini tanımlayabilir.
 Finans : Bu terim aynı zamanda blockchain teknolojisinde de kullanılır. Blockchain'de saklanan veriler, deftere eklendikten sonra değiştirilemediği için değiştirilemez kabul edilir.
 "Değişmez" kelimesini sorduğunuzda aklınızda belirli bir bağlam mı vardı?
+
+
 
 CHATGPTNOTU:
 //OOP (Object Oriented Programming - Nesne Tabanlı Programlama)
@@ -1670,35 +1820,35 @@ Sonuç olarak, Java’da final class kullanımı, sınıfın genişletilmesinin 
 //1. final Anahtar Kelimesi:
 //Bir sınıf final olarak tanımlanmışsa, bu sınıf başka sınıflar tarafından miras alınamaz. Bu, sınıfın alt sınıf oluşturulmasını tamamen engeller.
 Örnek:
-final class A 
+final class A
 {
     // Final sınıf
 }
-class B extends A 
+class B extends A
 {  // HATA: A sınıfı final olduğu için miras alınamaz.
     // Hata alırız
 }
 //-----------------------------------------
 //2. private Yapıcı Metotlar (Constructors):
-//Bir sınıfın yapıcı metotları private olarak tanımlanırsa, o sınıfın dışarıdan bir alt sınıfı oluşturulamaz. 
-//Çünkü bir sınıfın alt sınıfını oluşturmak için üst sınıfın yapıcı metotlarına erişmek gerekir. 
+//Bir sınıfın yapıcı metotları private olarak tanımlanırsa, o sınıfın dışarıdan bir alt sınıfı oluşturulamaz.
+//Çünkü bir sınıfın alt sınıfını oluşturmak için üst sınıfın yapıcı metotlarına erişmek gerekir.
 //Eğer bu yapıcı metot private ise, bu sınıfın miras alınması engellenmiş olur.
 Örnek:
-class A 
+class A
 {
-    private A() 
+    private A()
     {
         // Yapıcı metot private
     }
 }
-class B extends A 
+class B extends A
 {  // HATA: A sınıfının yapıcı metodu private olduğu için miras alınamaz.
     // Hata alırız
 }
 //--------------------------------------
 //3. static Sınıflar (İç Sınıflar İçin):
-//Bir sınıf static olarak tanımlanamaz, ancak bir sınıfın içindeki alt sınıf static olabilir. 
-//Statik iç sınıflar, dış sınıfa bağımlı olmadan var olabilir. Ancak, statik sınıflar bağımsız sınıf 
+//Bir sınıf static olarak tanımlanamaz, ancak bir sınıfın içindeki alt sınıf static olabilir.
+//Statik iç sınıflar, dış sınıfa bağımlı olmadan var olabilir. Ancak, statik sınıflar bağımsız sınıf
 //olmadıkları için başka sınıflar tarafından miras alınamazlar.
 Örnek:
 class Outer {
@@ -1712,36 +1862,35 @@ class Child extends Outer.Inner
 }
 //---------------------------------------
 //4. Soyut Sınıfın Yapıcı Metodu private:
-//Bir sınıf abstract (soyut) olarak tanımlansa bile, yapıcı metodu private yapılırsa miras alınamaz. 
+//Bir sınıf abstract (soyut) olarak tanımlansa bile, yapıcı metodu private yapılırsa miras alınamaz.
 //Bu çok nadiren kullanılan bir durumdur.
 Örnek:
-abstract class A 
+abstract class A
 {
-    private A() 
+    private A()
     {
         // Private yapıcı
     }
 }
-class B extends A 
+class B extends A
 {  // HATA: A'nın yapıcı metodu private olduğu için miras alınamaz.
     // Hata alırız
 }
 //------------------
 //5. Final Metotlar:
-//Bir sınıf miras alınabilir olsa bile, metotlardan bazıları final olarak tanımlanırsa bu metotlar alt sınıflar 
+//Bir sınıf miras alınabilir olsa bile, metotlardan bazıları final olarak tanımlanırsa bu metotlar alt sınıflar
 //tarafından override edilemez. Yani, sınıf miras alınabilir, ancak final metotlar değiştirilemez.
 Örnek:
-class A 
+class A
 {
-    final void show() 
+    final void show()
     {
         System.out.println("A sınıfı");
     }
 }
-class B extends A 
+class B extends A
 {
     // show() metodu override edilemez
     // Hata verir
 }
 Bu durumlar, bir sınıfın ya da metotlarının başka sınıflar tarafından miras alınmasını ve değiştirilmesini engeller.
-*/
