@@ -1,6 +1,7 @@
 package d28exception_enum;
 
 public enum Cities {
+
     /*Java'da enum (enumeration - sıralama), bir dizi sabit değeri temsil etmek için kullanılan özel bir class türüdür.
    enum yapısı, belirli bir değer kümesini temsil eden sabitleri (constants) tanımlamak için kullanılır.
    Degisme ihtimali olmayan verileri tutarlar.(ay, gun isimleri gibi) ve buyuk harfle yazilirlar.
@@ -16,11 +17,11 @@ public enum Cities {
     Kod tekrarını azaltır: Enumlar, aynı sabit değerleri birden çok kez tanımlamayı önler.
     Bu, kod tekrarını azaltır. Ve dis kaynaklara bagimliligi kaldirir.
 
-    Ornegin illeri app'inizde saklarsiniz, gerektiginde cagirir kullanirsiniz.
+    Ornegin illeri app’inizde saklarsiniz, gerektiginde cagirir kullanirsiniz.
     Bir siteden cekmezsiniz. Cunku site cokmus olabilir*/
 
-    //---------------------------------------------------------
-    /* Expected 0 arguments but found 3 hatası,Sehirler enum yapısında. Her bir enum değeri için 3 argüman sağladık
+    //---------------
+    /* Expected 0 arguments but found 3 hatası,Cities enum yapısında. Her bir enum değeri için 3 argüman sağladık
 
      (int, String, String). Bu argümanları kabul eden bir yapıcı (constructor) tanımlamanız gerekiyor.
     ama once 3 tane variable olusturalim
@@ -35,17 +36,17 @@ public enum Cities {
     Bu nedenle, plaka kodu, yalnızca enum'un içinden ayarlanmalı ve değiştirilmelidir.
     Dışarıdan erişilmesi veya değiştirilmesi, enum'un tutarlılığını bozabilir.*/
 
-    //----------------------------------------------------------------------------
+    //-----------
     /*
-    1) enum'daki datalar sabittir
-    2) enum'dan new keywordu ile yeni bir object olusturamazsiniz
+    1) enum’daki datalar sabittir
+    2) enum’dan new keywordu ile yeni bir object olusturamazsiniz
     3) Cunku enum icine koymus oldugunuz her bir sabit data bu classtan olusturulmus bir object mantigi ile calisir
-    4) enum icerisine koymus oldugumuz her bir sabit default olarak public static ve final'dir.
+    4) enum icerisine koymus oldugumuz her bir sabit default olarak public static ve final’dir.
     (Burada iller kastediliyor-enum tanımlarken bu anahtar kelimeleri sabitlerin önüne yazmak gerekmez
     ve yazılamaz da; dilin sözdizimi bunu desteklemez)
     5) Bu nedenle enum icindeki her bir sabit dataya enum ismi yazarak ulasabilirsiniz
-    6) enum'daki constructor yeni bir object olusturmak icin degil, enum'in icindeki her bir sabit
-    datanin icindeki variable'lari baslatmak icin kullanilir
+    6) enum’daki constructor yeni bir object olusturmak icin degil, enum’in icindeki her bir sabit
+    datanin icindeki variable’lari baslatmak icin kullanilir
     */
 
     ADANA(1, "Adana", "01000"),
@@ -138,5 +139,17 @@ public enum Cities {
         this.plateCode = plateCode;
         this.cityName = cityName;
         this.postalCode = postalCode;
+    }
+
+    public int getPlateCode() {
+        return plateCode;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
     }
 }
