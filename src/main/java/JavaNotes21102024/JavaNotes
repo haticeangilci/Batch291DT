@@ -1012,186 +1012,334 @@ Bu, uygulamanın herhangi bir bölümünde veritabanına erişim gerektiğinde b
     public Vehicle(){
         System.out.println("Honda, 2023, Benzin");
     }-----------------------------------------------------------------------------------------------------------------------
-  //Bu abstract bir class'tir. Parent'i da abstract.
+//---------------------------------------
+//2.Polymorphism:
+//Method Overloading + Method Overriding
+
+//OOP'nin prensiplerinin 2.sidir. Polymorphism (cok bicimlilik) demektir.
+//Bir method’u, istedigimiz sonuclari alacak sekilde, farkli farkli sekilllerde calistirabilmek icin kullanilir.
+
+//iki cesidi var.
+
+// i.Method Overloading: Bunu gormustuk
+
+//ii.Method Overriding (gecersiz kilmak, agir basan)
+// Child class'in Parent'taki methodu degistirerek kullanmasidir.
+
+//----------------
+//Override isleminde access modifier’larin durumlari ne olmalidir, onu ogrenelim
+
+/*Soru1: private method'lar override edilebilir mi?
+Cevap1: private method'lar override edilemezler cunku
+override edebilmek icin o method'a baska bir class'dan ulasabilmek gerekir.
+Ama private method'lar baska classlardan ulasilamaz methodlardir.
+
+Not: child’in access modifier’i parent’tan daha dar olamaz.
+Ornek: parent public - child protected olamaz cunku bu hata,
+Child class'ının eat metodunun, Parent class'ının eat metodundan daha az erişilebilir olmasından kaynaklanır.
+ */
+//---------------
+//Override isleminde access modifier’larin durumlarini ogrendik.
+//Simdi de return type durumlarina bakalim.
+
+//Parent icinde data type’i olan bir method olusturup child’da override edelim
+
+//---------------
+//Parent’ta int veri turunde bir method acip, child’da override etseydik ne olurdu?
+//---------------
+//Peki Parent’ta Class veri turunde bir method acip, child’da override etseydik ne olurdu?
+
+public void eat() {
+    System.out.println("Animals eat...");
+}
+
+public Animal create(){ //Data type Animal'dir
+    return new Animal(); //Animal objesi uretip disari Animal verdiniz
+}
+
+public int add(int a, int b){
+    return a + b;
+}
+
+public Integer multiply(Integer a, Integer b){
+    return a * b;
+} //child'da override edecegiz....bir de super metot cagrisi
+
+public void drink() {
+    System.out.println("Animals drink...");
+//---------------------------------------------------------------------------------------------------------------------------------------
+/*
+Soru: Peki child bir class’ta Object olusturuldugunda, Parent bunu nasil algiliyor da
+kendi constructor’unu calistiriyor?
+
+Cevap: Super() cagrisi ile yapilir. Super çağrısı, bir child class'ın constructor'unda,
+parent class’in parametresiz constructor'unu çağırmak için kullanılan bir ifadedir.
+
+super() çağrısı, bir child class'ta bir object oluşturulduğunda, otomatik olarak çağrılır.
+Ancak, super() çağrısını manuel olarak da çağırabilirsiniz.
+Bunu yapmak için, super() ifadesini, child class'ın constructor'unun başında kullanabilirsiniz.
+Manuel olarak yazarsaniz parametreli constructor’lari da cagirabilirsiniz.
+
+Neden super cagrisi yapalim?
+
+1- super keyword’unu kullanirsaniz, hem parent class’in methodunu çağırabilir hem de bu
+methodun davranışını child class’in ihtiyacına göre genisletebilirsiniz.
+
+2 - extends ise sadece miras almayı sağlar, ancak parent class’in methodlarını değiştirmez.
+*/
+//--------------------------------
+/*Soru : Ayni class’taki constructor’lar arasinda gezinebilir miyim?
+Ornegin Car class’tan hem sedan hem de sport modellerini ayni anda alip diger ortak ozelliklerle birlikte
+uretime sokabilir miyim? Evet.
+
+Cevap : Ayni class’taki constructor’lar arasinda gezinmek icin super() silinir ve this() keyword’u kullanilir.
+ this() default olarak parametresiz constructor’i secer.
+
+this() ve super() her zaman ilk satirda olmalidir.
+Bu yuzden bir constructor’da ikisi bir arada kullanilamazlar.*/
+
+//------------------
+/*Soru : super() keyword’u kullanilarak parent class’taki
+constructor’lar degil de, variable’lar ve methodlar secilebilir mi?  Evet.
+
+Cevap : child’da bir constructor icinde, super yazip parantez
+ koymadan, nokta koyup parent’taki variable veya methodlara ulasabiliriz */
+//----------------------------------------------------------------------------------------------------------D22-OOP-ANIMAL
+/*Return type void ise degisim olmaz. Hep void olarak kalir*/
+
+//---------------
+//Soru2: static method'lar override edilebilir mi?
+//Cevap2: static method'lar override edilemezler cunku; static variable veya method'lar tum objeler icin ortaktir.
+// Java static method'larin override edilmesine musaade etmez.
+//---------------
+/*Final keyword’u: Override’da ozel bir durum vardir:
+
+1- Java’da "final" anahtar kelimesi (keyword) ile işaretlenen bir method, alt class’lar tarafından override edilemez.
+2- Yani, bir class’in child’lari, final olarak işaretlenmiş bir methodu değiştiremez veya üzerine yazamaz.
+3- Bu method, final olarak işaretlenerek nihai ve değiştirilemez hale getirilir.
+4- Final Variables, Final Classes, Final Parametreler’de olabilir.
+
+Sonuc: "Final" kelimesi, programcılara kodlarını daha güvenli ve öngörülebilir hale getirme, optimizasyon sağlama
+veya belirli davranışları zorlamada yardımcı olmak için kullanılır.*/
+
+//ODEV: final overload'a engel midir?
+//--D22—Honda-------------------------------------------------------------------------------------------
+   /*
+ 4- Abstraction(Soyut)
+ Abstraction iki bolumden olusur.
+ i) Abstract Class:
+ Kendisinden object olusturulmaz. Bazi class’lari obje olusturmak amaciyla degil,
+ objeleri gruplara ayirmak ve genel ozellikleri belirlemek icin olustururuz.
+ Baslangic degil, sonuctur. Cünkü bu sınıflar belirli bir nesne grubunu temsil eder ve
+ bu gruptaki tüm nesneler için ortak olan özellikleri belirler.
+ */
+
+ //----------------
+  /*
+1)Abstract method'larin body'si olmaz.Size ne yaptigini soyler,nasil yaptigini soylemez.
+2)Body'si olan method'lara 'non-abstract' veya ‘concrete' (somut) method denir
+3)Abstract method'lar tum child class'lar tarafindan override edilmelidir yani kullanilmalidir.
+4)Abstract method'lar ancak abstract class'lar icinde olusturulabilir.
+5)Abstract class'lar hem 'abstract method' hem de 'concrete method’ icerebilirler.
+6)Concrete method'lar child class'lar tarafindan istenirse override edilebilirler
+ */
+
+ //----------------
+ //Java’da bir interface veya abstract class içinde main methodu yazmak mümkündür
+ //Bir abstract class içinde birden fazla body'siz (gövdesiz) metod, yani abstract metod bulunabilir
+ //Abstract Class’lar başka class’lar tarafından extends edilerek kullanılabilir.
+ //Java’da bir abstract class, normal (somut) bir class’in child’i olabilir.
+//--D22—Student------------------------------------------------------------------------------------------
+//3.Encapsulation: Data hiding(Veri Saklama)
+
+// OOP mantiginda class uyelerine erisimi sinirlandirabilirsiniz.
+// Bunu access modifier(erişim değiştiricileri)’larla yapabilirsiniz
+
+/*Ama class’a ulasim disinda ‘access modifier’ larla yapamadigimiz bazi seyleri ‘encapsulation’ ile yapabiliriz.
+
+1) Encapsulation, verileri koruma ve gizleme amacı taşır. Encapsulation kullanarak
+read ve write (okuma ve yazma) ozelliklerini birbirinden ayri olarak tanimlayabiliriz.
+
+2) İstedigimize okuma, istedigimize yazma yetkisi veririz.
+***Bazi insanlar bilgiyi sadece
+gorsun ama degistiremesin. (Mesela,bir personel bir rapora fiyat bilgisi girsin-write-
+ama rapor sonucunu(sirket kar zararini) goremesin. Sirket muduru de raporu okusun -read- ama degistiremesin.
+CEO’da maliyet artislarini yansitabilmek icin hem okusun hemde yazsin gibi)
+
+a) Data nasil saklanir?
+Access modifier'larini 'private' yaparak datayi diger class'lardan gorunmez hale getiririm
+boylece data'yi saklamis olurum.
+
+b) Data'yi sakladin ama okuman gerekirse ne yapacaksin?
+get() method'lar olusturarak saklanmis datalari diger class'lardan okuyabilirim
+
+c) Data'yi sakladin ama o data'yi degistirmen gerekirse ne yapacaksin?
+set() method'lar olusturarak saklanmis datalari diger class'lardan degistirebilirim
+
+d)Hem okunabilir hemde yazilabilsin diyorsaniz, hem getter hemde setter method’u ayni anda olusturmaliyiz.
+ */
+// Setter metodu yeni data uretmez, var olan datayi degistirir
+//bu yuzden return type'lari hep void olmalidir.
+
+//Setter metotlar ise private elemanlara deger atamasi gerceklestirdigi icin parametre alirlar.
+//ODEV: encapsulation da private ile gizlenen bir veri baska package'dan set method ile degistirilebilir mi?
+Cevap: Evet, private olarak tanımlanan bir veri, başka bir paketten doğrudan erişilemez. Ancak, bu veriyi değiştirmek için sınıf içinde tanımlı bir public veya protected set metodu kullanılabilir. Bu sayede, dışarıdan bu metod aracılığıyla private verinin değeri değiştirilebilir.
+Kısacası: private veri doğrudan erişilemez; ama bir set metodu ile başka paketten değerini değiştirmek mümkün olabilir.
+
+//D23---AbcstractChild----------------------------------------------------------------------------------------------------------------
+public abstract class AbstractChild extends Honda{
+    //Bu abstract bir class'tir. Parent'i da abstract.
     //Parent'inin abstract methodlarini implement etmek zorunda değil
-    a) interface’leri parent yapmak icin ‘implements’ keyword’u child icinde kullanilir
-    b) extends kullanilmaz cunku bu iki class arasinda kullanilir
-    c) AudiA4 Class’i, Engine interface’i icindeki tum methodlari override etmek zorundadir.
-    d) AudiA4 Class’i, Engine interface’i icindeki tum methodlari override etmek zorunda
-    oldugundan method’larin bas kismina ‘override’ yazmak gerekmez ama tavsiye edilir.
-    e) Class icinde access modifier yazilmazsa default kabul edildiginden, mecbur public yazariz
-    //--------------------------
-    //Engine interface'inden override edilenler
+//------------------------------------------------------------
+/*
+a) interface’leri parent yapmak icin ‘implements’ keyword’u child icinde kullanilir
+b) extends kullanilmaz cunku bu iki class arasinda kullanilir
+c) AudiA4 Class’i, Engine interface’i icindeki tum methodlari override etmek zorundadir.
+d) AudiA4 Class’i, Engine interface’i icindeki tum methodlari override etmek zorunda
+oldugundan method’larin bas kismina ‘override’ yazmak gerekmez ama tavsiye edilir.
+e) Class icinde access modifier yazilmazsa default kabul edildiginden, mecbur public yazariz
+*/
+//Engine e = new Engine(); //HATA, interface'lerden object uretilmez
+//-----------------------------------------------------------------------------------------------------------------------------------------
 /*Interface (arayüz), class’larin uygulayabileceği bir “sözleşme” olarak düşünülebilir.
-     Bir interface, bir veya daha fazla abstract method içerir ve
-    bu methodların imzalarını (adlarını ve parametrelerini) belirtir,
-    ancak bu methodların nasıl uygulanacağını tanımlamaz.
-    Class’lar, bu interface’leri uygulayarak (implement ederek) bu methodları
-    kendi ihtiyaçlarına göre tanımlarlar.*/
+ Bir interface, bir veya daha fazla abstract method içerir ve
+bu methodların imzalarını (adlarını ve parametrelerini) belirtir,
+ancak bu methodların nasıl uygulanacağını tanımlamaz.
+Class’lar, bu interface’leri uygulayarak (implement ederek) bu methodları
+kendi ihtiyaçlarına göre tanımlarlar.*/
 
-    //------------------
-    //i) interface icindeki method’lar otomatik olarak ‘public’ dir,
-    // bu yuzden interface’lerde method olustururken access modifier yazmayiz.(static degillerdir)
-    //ii) interface icindeki method’lar otomatik olarak ‘abstract’ dir, bu yuzden interface’lerde
-    // abstract method olustururken ‘abstract’ keyword’unu ve ‘method body’ sini yazmayiz.    //--------------------
-    1) interface’lerden object olusturamazsiniz.(constructor’lari olmadigi icin eksik yapilardir)
-    2) interface’ler sadece parent olur
-    3) interface’ler yapilmasi sart olan seyleri depolamak icin olusturulur.
-    Bu yüzden interface’lere "to do list " de denir.(yapilacaklar listesi)
-            child               	parent
-            class               	class        	==> 	 extends
-            interface           	interface   	==> 	 extends -->Bir interface baska bir interface'in child'i olabilir
-            class               	interface   	==> 	 implements
-            interface           	class       	==> 	 olamaz —> Bir interface baska bir class'in child'i olamaz
-    */
-    /*4- Birden fazla interface'in her birine aynı isimli ve aynı parametre yapısına sahip abstract metodlar koyabiliriz.
-    Örneğin, Engine, AC ve Brake interface'lerinin her birinde run() metodunu tanımlayabiliriz.
-    Bu durumda, bu interface'leri implement eden child class bu metodları override ettiğinde,
-    tek bir override işlemi yeterlidir ve bir belirsizlik (ambiguity) oluşmaz. Override edilen metod,
-    tüm interface'lerdeki abstract metodların yerine geçer.*/
-    //5) Interface’ler de variable’lar default olarak public static final’dir. Yani yazmasaniz da olur
-    //6) Interface’lerin hepsine ayni isimli variable koyabiliriz. Static olup interface uzerinden ulasildigi icin sorun olmaz.
-    /*7) Normalde interface icine concrete method konulamaz ama bazi özel durumlarda concrete
-    method koymak gerekirse;
-        a) default keywordunu kullanarak bunu yapabiliriz
-        b) static keywordunu kullanarak bunu yapabiliriz
+//------------------
+//i) interface icindeki method’lar otomatik olarak ‘public’ dir,
+// bu yuzden interface’lerde method olustururken access modifier yazmayiz.(static degillerdir)
 
-    ==>  static keywordunu kullanarak olusturdugumuz concrete methodlara ulasmak icin
-    object olusturmaya gerek yoktur. Interface ismi yeterlidir
-    ==>  default keywordunu kullanarak olusturdugumuz concrete methodlara interface’in child class’indan
-    object olusturarak ulasilabilir*/
-    //Interview Sorusu:
-    /*a) Abstract class'lar hem abstract method hemde concrete methodlar icerebilir.
-    fakat interface’ler varsayilan olarak abstract method icerir.
-       Ama interfacelerde istersek default ve static keywordlerini kullanarak concrete method olusturabiliriz
-    b) Abstract class'lar multiple inheritance’i desteklemez ama interface’ler destekler
-    c) Abstract class'lar icinde her turlu variable olusturulabilir, interfaceler icindeki variable’lar
-    public, static ve final olmak zorundadir
-    d) Interface, concrete class'ın child'ı olamaz. Abstract class, concrete class'ın child'ı olabilir.
-    e) Abstract class'lar bir class olduğundan, içinde constructor'lar olabilir. Ancak abstract class'tan  doğrudan nesne (object) oluşturulamaz. Yani abstract class'ı new anahtar kelimesi ile kullanarak bir    nesne oluşturamazsınız, ancak constructor'ları kullanılabilir ve miras alınan class tarafından çağrılabilir.
-    Interface'lerde ise constructor yoktur, çünkü bir interface'den doğrudan nesne oluşturulamaz.
-    Interface'ler sadece bir sözleşme (contract) sunar.
-4- Abstraction(Soyut)
-    Abstraction iki bolumden olusur.
-    i) Abstract Class:
-    Kendisinden object olusturulmaz. Bazi class’lari obje olusturmak amaciyla degil,
-    objeleri gruplara ayirmak ve genel ozellikleri belirlemek icin olustururuz.
-    Baslangic degil, sonuctur. Cünkü bu sınıflar belirli bir nesne grubunu temsil eder ve
-    bu gruptaki tüm nesneler için ortak olan özellikleri belirler.
-   1)Abstract method'larin body'si olmaz.Size ne yaptigini soyler,nasil yaptigini soylemez.
-   2)Body'si olan method'lara 'non-abstract' veya ‘concrete' (somut) method denir
-   3)Abstract method'lar tum child class'lar tarafindan override edilmelidir yani kullanilmalidir.
-   4)Abstract method'lar ancak abstract class'lar icinde olusturulabilir.
-  /*Collections (koleksiyonlar), Object’leri depolamak ve işlemek için kullanılan
-        bir class’lar ve interface'ler kümesidir.
+//ii) interface icindeki method’lar otomatik olarak ‘abstract’ dir, bu yuzden interface’lerde
+// abstract method olustururken ‘abstract’ keyword’unu ve ‘method body’ sini yazmayiz.
 
-        —Collections, çeşitli Object (nesne) işleme yöntemlerini de destekler:
-                Ekleme: Bir nesneyi bir koleksiyona eklemek için kullanılır.
-                Silme: Bir nesneyi bir koleksiyondan silmek için kullanılır.
-                Arama: Bir koleksiyonda bir nesneyi bulmak için kullanılır.
-                Döngüleme: Bir koleksiyonun tüm nesnelerini işlemek için kullanılır.
+//--------------------
+/*
+1) interface’lerden object olusturamazsiniz.(constructor’lari olmadigi icin eksik yapilardir)
+2) interface’ler sadece parent olur
+3) interface’ler yapilmasi sart olan seyleri depolamak icin olusturulur.
+Bu yüzden interface’lere "to do list " de denir.(yapilacaklar listesi)
 
-        —Collections, Java programcılarının aşağıdakileri yapmasına olanak tanır:
-                Verileri verimli bir şekilde depolamak
-                Verileri hızlı bir şekilde işlemek(verileri aramak, sıralamak, filtrelemek)
-                Verileri güvenli bir şekilde depolamak*/
+        child                   parent
 
-        //--------------------------------
-        /*Java da Array’ler neden eksik kaldi da Collection’lar gelistirildi?
+        class                   class          ==>     extends
+        interface               interface      ==>     extends -->Bir interface baska bir interface'in child'i olabilir
 
-        Java’da array'ler eksik kaldı çünkü:
+        class                   interface      ==>     implements
+        interface               class          ==>     olamaz —> Bir interface baska bir class'in child'i olamaz
+*/
+/*4- Birden fazla interface'in her birine aynı isimli ve aynı parametre yapısına sahip abstract metodlar koyabiliriz.
+Örneğin, Engine, AC ve Brake interface'lerinin her birinde run() metodunu tanımlayabiliriz.
+Bu durumda, bu interface'leri implement eden child class bu metodları override ettiğinde,
+tek bir override işlemi yeterlidir ve bir belirsizlik (ambiguity) oluşmaz. Override edilen metod,
+tüm interface'lerdeki abstract metodların yerine geçer.*/
+//5) Interface’ler de variable’lar default olarak public static final’dir. Yani yazmasaniz da olur
+//6) Interface’lerin hepsine ayni isimli variable koyabiliriz. Static olup interface uzerinden ulasildigi icin sorun olmaz.
+/*7) Normalde interface icine concrete method konulamaz ama bazi özel durumlarda concrete
+method koymak gerekirse;
+    a) default keywordunu kullanarak bunu yapabiliriz
+    b) static keywordunu kullanarak bunu yapabiliriz
+==>  static keywordunu kullanarak olusturdugumuz concrete methodlara ulasmak icin
+object olusturmaya gerek yoktur. Interface ismi yeterlidir
+==>  default keywordunu kullanarak olusturdugumuz concrete methodlara interface’in child class’indan
+object olusturarak ulasilabilir*/
+//Interview Sorusu:
+/*a) Abstract class'lar hem abstract method hemde concrete methodlar icerebilir.
+fakat interface’ler varsayilan olarak abstract method icerir.
+   Ama interfacelerde istersek default ve static keywordlerini kullanarak concrete method olusturabiliriz
+b) Abstract class'lar multiple inheritance’i desteklemez ama interface’ler destekler
+c) Abstract class'lar icinde her turlu variable olusturulabilir, interfaceler icindeki variable’lar public, static ve final olmak zorundadir
+d) Interface, concrete class'ın child'ı olamaz. Abstract class, concrete class'ın child'ı olabilir.
+e) Abstract class'lar bir class olduğundan, içinde constructor'lar olabilir. Ancak abstract class'tan doğrudan nesne (object) oluşturulamaz. Yani abstract class'ı new anahtar kelimesi ile kullanarak bir nesne oluşturamazsınız, ancak constructor'ları kullanılabilir ve miras alınan class tarafından çağrılabilir. Interface'lerde ise constructor yoktur, çünkü bir interface'den doğrudan nesne oluşturulamaz. Interface'ler sadece bir sözleşme (contract) sunar.
+//--D23—Honda—Abstract
+//7) Final methodlar override edilemedigi icin, abstract olamazlar.
+// (***”final” bir access modifier değildir. "final," bir Java anahtar kelimesidir)
 
-        Boyutları statiktir: Bu, array'lerin dinamik olarak büyüyemediği veya küçülemediği anlamına gelir.
-        İç içe geçmiş array'ler karmaşıktır: Bu, array'lerin birbirleriyle ilişkili olduğu durumlarda karmaşık ve hata yapmaya müsaittir.
-        Array'ler genel olarak verimli değildir: Bu, ekleme, silme ve arama gibi işlemler için genellikle daha yavaştır.
+//----------------
+//8) Abstract bir class’in abstract bir child’i olabilir ve abstract child parent’inin methodlarini
+// override etmek zorunda degildir ama isterse de edebilir
 
-        Collections, bu dezavantajları çözmek için tasarlanmıştır.*/
+//----------------
+//9) Abstract bir class private olamaz yoksa child’lari ona ulasip override edemez
+//--------------------------------------------------------------------------------D24—COLLECTIONS---LinkedList01
+/*Collections (koleksiyonlar), Object’leri depolamak ve işlemek için kullanılan
+bir class’lar ve interface'ler kümesidir.
 
-        ArrayList<String> list1 = new ArrayList<>();
-        List<String> list2 = new ArrayList<>();
-        //List<String> list3 = new List(); //HATA, interface'lerden object uretilmez
-        //------------------
-        /*LinkedList: Bağlı bir listedir.
-        LinkedList’ler de, bir dizi index'e sahiptir. Ancak, bu index'ler,
-        LinkedList'in içinde bulunan node'ların konumunu temsil eder.
-        ArrayList'lerde, bir elemana erişmek için, o elemanın index'ine doğrudan erişilebilir.
-        Ancak, LinkedList'lerde, bir elemana erişmek için, o elemanın bulunduğu node'a erişmek gerekir.
-        Bu, LinkedList'lerde bir elemana erişmenin daha yavaş olmasına neden olabilir.
-        1) Her eleman, bir önceki ve bir sonraki elemanı işaret eden (pointer) bağlantılara sahiptir.
-        Bu nedenle, ekleme ve silme işlemleri hızlıdır, ancak elemanlara erişim, başka bir elemandan
-        başlayarak ilerlemeyi gerektirir. Yani ArrayList’e gore erisim yavastir.
-        ArrayList’lerde get(index) ile hizli erisiriz. Ama LinkedList’ler en bastan istenen eleman mi diye
-        tek tek bakar.
-        2) Başka bir elemanın başından veya sonundan eleman eklemek veya silmek, hızlı bir şekilde yapılabilir.
-        3) Bağlantılar ve düğümler (node) nedeniyle LinkedList, genellikle daha fazla bellek kullanır.*/
-        /*Sonuc:
-        LinkedList’in bu hızlı ekleme ve silme işlemleri, bazı senaryolarda tercih edilmesine neden olurken,
-        veriye doğrudan erişim gerektiren durumlarda ArrayList daha uygundur.
-        Bu nedenle, hangi liste türünün kullanılacağı, uygulamanın gereksinimlerine ve
-        yapılacak işlemlerin türüne bağlıdır.*/
-        LinkedList<String> myList = new LinkedList<>();
-        //1-add() : listeye bir eleman ekler
-        myList.add("Ali");
-        myList.add("Veli");
-        myList.add("Ayse");
-        myList.add("Fatma");
-        System.out.println(myList); //[Ali, Veli, Ayse, Fatma] - insertion order - ekleme sirasi
+—Collections, çeşitli Object (nesne) işleme yöntemlerini de destekler:
+        Ekleme: Bir nesneyi bir koleksiyona eklemek için kullanılır.
+        Silme: Bir nesneyi bir koleksiyondan silmek için kullanılır.
+        Arama: Bir koleksiyonda bir nesneyi bulmak için kullanılır.
+        Döngüleme: Bir koleksiyonun tüm nesnelerini işlemek için kullanılır.
 
-        //-------------------------
-        //Java’da LinkedList'e eleman eklemek için genellikle add metodu kullanılır.
-        // Bu, standart ve en yaygın yöntemdir. Ancak, LinkedList’e eleman eklemek
-        // için daha "kısa yollar" bulunmaktadır.
-        LinkedList<String> linkedList = new LinkedList<>(Arrays.asList("Eleman1", "Eleman2", "Eleman3"));
-        //System.out.println(linkedList); //[Eleman1, Eleman2, Eleman3]
-        LinkedList<String> linkedList2 = new LinkedList<>(List.of("Eleman1", "Eleman2", "Eleman3"));
-        //System.out.println(linkedList2); //[Eleman1, Eleman2, Eleman3]
-        //List.of(), Constructor’a degil de, dogrudan yazilirsa, immutable (değişmez-Boyutta, elemanda degismez)
+—Collections, Java programcılarının aşağıdakileri yapmasına olanak tanır:
+        Verileri verimli bir şekilde depolamak
+        Verileri hızlı bir şekilde işlemek(verileri aramak, sıralamak, filtrelemek)
+        Verileri güvenli bir şekilde depolamak*/
+
+//--------------------------------
+/*Java da Array’ler neden eksik kaldi da Collection’lar gelistirildi?
+Java’da array'ler eksik kaldı çünkü:
+Boyutları statiktir: Bu, array'lerin dinamik olarak büyüyemediği veya küçülemediği anlamına gelir.
+İç içe geçmiş array'ler karmaşıktır: Bu, array'lerin birbirleriyle ilişkili olduğu durumlarda karmaşık ve hata yapmaya müsaittir.
+Array'ler genel olarak verimli değildir: Bu, ekleme, silme ve arama gibi işlemler için genellikle daha yavaştır.
+Collections, bu dezavantajları çözmek için tasarlanmıştır.*/
+//List<String> list3 = new List(); //HATA, interface'lerden object uretilmez
+//------------------
+/*LinkedList: Bağlı bir listedir.
+
+LinkedList’ler de, bir dizi index'e sahiptir. Ancak, bu index'ler,
+LinkedList'in içinde bulunan node'ların konumunu temsil eder.
+
+ArrayList'lerde, bir elemana erişmek için, o elemanın index'ine doğrudan erişilebilir. Ancak, LinkedList'lerde, bir elemana erişmek için, o elemanın bulunduğu node'a erişmek gerekir. Bu, LinkedList'lerde bir elemana erişmenin daha yavaş olmasına neden olabilir.
+
+1) Her eleman, bir önceki ve bir sonraki elemanı işaret eden (pointer) bağlantılara sahiptir. Bu nedenle, ekleme ve silme işlemleri hızlıdır, ancak elemanlara erişim, başka bir elemandan başlayarak ilerlemeyi gerektirir. Yani ArrayList’e gore erisim yavastir.
+ArrayList’lerde get(index) ile hizli erisiriz. Ama LinkedList’ler en bastan istenen eleman mi diye
+tek tek bakar.
+2) Başka bir elemanın başından veya sonundan eleman eklemek veya silmek, hızlı bir şekilde yapılabilir.
+3) Bağlantılar ve düğümler (node) nedeniyle LinkedList, genellikle daha fazla bellek kullanır.*/
+/*Sonuc:
+LinkedList’in bu hızlı ekleme ve silme işlemleri, bazı senaryolarda tercih edilmesine neden olurken, veriye doğrudan erişim gerektiren durumlarda ArrayList daha uygundur.
+Bu nedenle, hangi liste türünün kullanılacağı, uygulamanın gereksinimlerine ve yapılacak işlemlerin türüne bağlıdır.*/
+//-------------------------
+//Java’da LinkedList'e eleman eklemek için genellikle add metodu kullanılır.
+// Bu, standart ve en yaygın yöntemdir. Ancak, LinkedList’e eleman eklemek
+// için daha "kısa yollar" bulunmaktadır.
+//List.of(), Constructor’a degil de, dogrudan yazilirsa, immutable (değişmez-Boyutta, elemanda degismez)
         // bir liste döndürür. Bu liste üzerinde herhangi bir değişiklik yapmaya çalışmak
         // UnsupportedOperationException hatası fırlatır. Yani, List.of() ile oluşturulan
         // bir liste üzerinde eleman ekleyemez, çıkaramaz veya mevcut elemanların değerlerini değiştiremezsiniz.
+
 /*        List<String> immutableList = List.of("Eleman1", "Eleman2", "Eleman3");
         immutableList.add("serkan");
         System.out.println(immutableList);*/
-        //-------------------------
-        //2- add(int index, E element); belirtilen konuma bir oge ekler
-        myList.add(1, "Zeynep");
-        System.out.println(myList); //[Ali, Zeynep, Veli, Ayse, Fatma]
-        //3- addFirst(E e): Listenin basina oge ekler
-        myList.addFirst("Hasan");
-        System.out.println(myList); //[Hasan, Ali, Zeynep, Veli, Ayse, Fatma]
-        //4- addLast(E e): Listenin sonuna bir öğe ekler.
-        myList.addLast("Huseyin");
-        System.out.println(myList); //[Hasan, Ali, Zeynep, Veli, Ayse, Fatma, Huseyin]
-        //5) remove(Object o): Belirtilen öğeyi listeden kaldırır ve boolean dondurur
-        boolean m1 = myList.remove("Ali");
-        System.out.println(myList); //[Hasan, Zeynep, Veli, Ayse, Fatma, Huseyin]
-        System.out.println(m1); //true
-        //6)removeFirstOccurrence() metodu,
-        // belirtilen bir öğeyi LinkedList içinde
-        //bastan başlayarak arar ve bu öğeyi bulduğunda onu listeden kaldırır.
-        //Eğer bu öğe birden fazla kez bulunuyorsa, en bastaki öğe kaldırılır.
-        //Eğer belirtilen öğe listede bulunmuyorsa, herhangi bir değişiklik yapmaz ve liste aynı kalır.
-   5)Abstract class'lar hem 'abstract method' hem de 'concrete method’ icerebilirler.
-   6)Concrete method'lar child class'lar tarafindan istenirse override edilebilirler
-    */
-    //----------------
-    //Java’da bir interface veya abstract class içinde main methodu yazmak mümkündür
-    //Bir abstract class içinde birden fazla body'siz (gövdesiz) metod, yani abstract metod bulunabilir
-    //Abstract Class’lar başka class’lar tarafından extends edilerek kullanılabilir.
-    //Java’da bir abstract class, normal (somut) bir class’in child’i olabilir.
-    //----------------
-    //7) Final methodlar override edilemedigi icin, abstract olamazlar.
-    // (***”final” bir access modifier değildir. "final," bir Java anahtar kelimesidir)
-    //----------------
-    //8) Abstract bir class’in abstract bir child’i olabilir ve abstract child parent’inin methodlarini
-    // override etmek zorunda degildir ama isterse de edebilir
-    //----------------
-    //9) Abstract bir class private olamaz yoksa child’lari ona ulasip override edemez
-    //---------------
-    public void music(){
-        System.out.println("Pro");
-    }
-    public abstract void engine();
+  //-------------------------
+ //2- add(int index, E element); belirtilen konuma bir oge ekler
+//3- addFirst(E e): Listenin basina oge ekler
+//4- addLast(E e): Listenin sonuna bir öğe ekler.
+//5) remove(Object o): Belirtilen öğeyi listeden kaldırır ve boolean dondurur
+//6)removeFirstOccurrence() metodu,
+// belirtilen bir öğeyi LinkedList içinde
+//bastan başlayarak arar ve bu öğeyi bulduğunda onu listeden kaldırır.
+//Eğer bu öğe birden fazla kez bulunuyorsa, en bastaki öğe kaldırılır.
+//Eğer belirtilen öğe listede bulunmuyorsa, herhangi bir değişiklik yapmaz ve liste aynı kalır.
+//---------ek bilgi - Tum Yusuf'lari siler
+//myList.removeAll(Collections.singleton("Yusuf")); //[Hasan, Zeynep, Veli, Ayse, Fatma, Huseyin]
+//7) removeLastOccurrence metodu, belirtilen bir öğeyi LinkedList içinde
+//sondan başlayarak arar ve bu öğeyi bulduğunda onu listeden kaldırır.
+//Eğer bu öğe birden fazla kez bulunuyorsa, en sondaki öğe kaldırılır.
+//Eğer belirtilen öğe listede bulunmuyorsa, herhangi bir değişiklik yapmaz ve liste aynı kalır.
+//8) peek() metodu, bir koleksiyonun ilk elemanına erişmek için kullanılır.
+// Bu metod, elemanı koleksiyondan kaldırmaz.
+// Bu metod, koleksiyon boşsa null dondurur
+//9)poll() metodu, bir koleksiyonun başındaki elemanı alır ve koleksiyondan kaldırır.
+// Bu metod, koleksiyon boşsa null döndürür.
+//10) element() metodu, bir koleksiyonun başındaki elemanı alır, ancak elemanı koleksiyondan kaldırmaz.
+// Bu metod, koleksiyon boşsa NoSuchElementException istisnası atar. (peek() null dondurur)
+// bir koleksiyonun boş olup olmadığını kontrol etmek için NoSuchElementException istisnasını kullanir
+//11) pop() metodu, bir koleksiyonun ilk elemanını alır ve koleksiyondan kaldırır.
+// Bu metod, koleksiyon boşsa NoSuchElementException istisnası atar.(poll() null dondurur)
 //Set’ler tekrarsiz(unique) datalari depolamak icin kullanilir. Ornegin; e-mail, tc kimlik no, il plaka no
 
 /*Java’da üç tür set vardır:
@@ -1206,132 +1354,31 @@ null’i eleman olarak kabul ederler */
 
 //-------------ek bilgi
 //Hash Code gormek istersek
-
-String a = "Aliye canan";
-System.out.println(a.hashCode()); //hashcode'lari benzersiz (unique) degildir
-
 //-------------
-/*2) LinkedHashSet: Bu set, elemanların eklenme sırasına göre(insertion order) depolandığı
-bir settir. LinkedHashSet class'i, HashSet class'inin child'idir.
-LinkedHashSet'ler, elemanların sırasını korumaya ihtiyaç duyulan uygulamalar için iyi bir seçimdir.
-Ancak, HashSet'lerden daha yavaş performans sunarlar. (orta)
+    /*2) LinkedHashSet: Bu set, elemanların eklenme sırasına göre(insertion order) depolandığı
+    bir settir. LinkedHashSet class'i, HashSet class'inin child'idir.
+    LinkedHashSet'ler, elemanların sırasını korumaya ihtiyaç duyulan uygulamalar için iyi bir seçimdir.
+    Ancak, HashSet'lerden daha yavaş performans sunarlar. (orta)
+    Ornegin; Okullarda kayit sirasina gore ogrenci bilgilerini tutmak isterseniz kullanabilirsiniz
+    //-------------
+    3) TreeSet: Bu set, elemanların doğal sırasına(natural order-kucukten buyuge) göre depolandığı bir settir.
+    HashSet'ler ve LinkedHashSet'lerden daha yavaş performans sunarlar.
+    Java'da TreeSet, SortedSet arayüzünü(interface) uygulayan bir class'tir.
+    Bu nedenle, TreeSet bir Sorted Set’tir.*/
+    //-------------------
+    //HashSet nasil olusturulur?
+    HashSet<String> hs = new HashSet<>();
+    System.out.println(hs); //[]
+    //HashSet'e nasil eleman eklenir?
+    hs.add("Sinan");
+    hs.add("Kerem");
+    hs.add("Tuba");
+    hs.add("Onur");
+    System.out.println(hs); //[Kerem, Sinan, Tuba, Onur]
 
-Ornegin; Okullarda kayit sirasina gore ogrenci bilgilerini tutmak isterseniz kullanabilirsiniz
 
-//-------------
-3) TreeSet: Bu set, elemanların doğal sırasına(natural order-kucukten buyuge) göre depolandığı bir settir.
-HashSet'ler ve LinkedHashSet'lerden daha yavaş performans sunarlar.
-Java'da TreeSet, SortedSet arayüzünü(interface) uygulayan bir class'tir.
-Bu nedenle, TreeSet bir Sorted Set’tir.*/
-//-------------------
-//HashSet nasil olusturulur?
-HashSet<String> hs = new HashSet<>();
-System.out.println(hs); //[]
-//HashSet'e nasil eleman eklenir?
-hs.add("Sinan");
-hs.add("Kerem");
-hs.add("Tuba");
-hs.add("Onur");
-System.out.println(hs); //[Kerem, Sinan, Tuba, Onur]
-//Set’ler tekrarsiz(unique) datalari depolamak icin kullanilir. Ornegin; e-mail, tc kimlik no, il plaka no
-        /*Java’da üç tür set vardır:
-        1) HashSet: Bu set, elemanların hash kodlarına göre depolandığı bir settir. Elemanlar,
-        her birinin benzersiz bir hash kodu (kimlik numarası) ile depolandığı bir yapıda tutulur.
-        Bir eleman eklediğinizde, bu elemanın hash kodu hesaplanır ve o hash koduna karşılık gelen  bir hücreye yerleştirilir.
-        HashSet'ler, en hızlı performansı sunar.Ancak, elemanların sırasını korumazlar.
-        null’i eleman olarak kabul ederler */
-        //-------------ek bilgi
-        //Hash Code gormek istersek
-        String a = "Aliye canan";
-        System.out.println(a.hashCode()); //hashcode'lari benzersiz (unique) degildir
-        //-------------
-        /*2) LinkedHashSet: Bu set, elemanların eklenme sırasına göre(insertion order) depolandığı
-        bir settir. LinkedHashSet class'i, HashSet class'inin child'idir.
-        LinkedHashSet'ler, elemanların sırasını korumaya ihtiyaç duyulan uygulamalar için iyi bir seçimdir.
-        Ancak, HashSet'lerden daha yavaş performans sunarlar. (orta)
-        Ornegin; Okullarda kayit sirasina gore ogrenci bilgilerini tutmak isterseniz kullanabilirsiniz
-        //-------------
-        3) TreeSet: Bu set, elemanların doğal sırasına(natural order-kucukten buyuge) göre depolandığı bir settir.
-        HashSet'ler ve LinkedHashSet'lerden daha yavaş performans sunarlar.
-        Java'da TreeSet, SortedSet arayüzünü(interface) uygulayan bir class'tir.
-        Bu nedenle, TreeSet bir Sorted Set’tir.*/
-        //-------------------
-        //HashSet nasil olusturulur?
-        HashSet<String> hs = new HashSet<>();
-        System.out.println(hs); //[]
-        //HashSet'e nasil eleman eklenir?
-        hs.add("Sinan");
-        hs.add("Kerem");
-        hs.add("Tuba");
-        hs.add("Onur");
-        System.out.println(hs); //[Kerem, Sinan, Tuba, Onur]
-/* Java’da Queue, verilerin belirli bir düzen içinde saklandığı ve işlendiği bir veri yapısıdır.
-        Ilk giren ilk çıkar (FIFO-first in first out) prensibine dayanır, yani ilk eklenen obje ilk çıkarılır.
-        Queue, sıralı işlemler ve verilerin işlenmesi için kullanılır. Araya eleman eklemek mümkün değildir.
-        Gerçek dünyadan birkaç örnek:
-     Sıra Kuyruğu (Queue): Sıra bekleyenlerin önünde olan kişi önce hizmet alır. Bir örnek olarak,   bir fast-food restoranındaki siparişlerin işlenmesini düşünebilirsiniz.
-         İlk gelen sipariş, ilk hazırlanan ve teslim edilen sipariştir.
-    BBilet Sırası: Bir konser veya etkinlik için bilet almak isteyen kişiler sıraya girerler.
-         Biletler, sırayla satılır ve ilk gelen kişi ilk biletini alır.
-     Çağrı Sırası: Müşteri hizmetleri çağrı merkezindeki müşteriler, sırayla operatörlere bağlanır.
-         İlk çağrı bekleyeni önce konuşur, ardından sıradaki çağrı alınır.
-     Dosya İşleme: Bilgisayar işletim sistemleri ve uygulamalar, dosyaları sırayla işlerler.
-         Bir dosya işlem tamamlandığında, sıradaki dosya işlenir.
-    Kuyruğun çalışma mantığı, elemanların kuyruğun sonuna eklenip başından çıkarılması şeklinde gerçekleşir.
-    Queue, sıralı işlemler veya veriler gerektiğinde kullanışlıdır.
-    Queue interface’i, LinkedList ve PriorityQueue gibi farklı class’lar tarafından uygulanabilir.*/
-        //Queue nasil olusturulur?
-        Queue<String> storage = new LinkedList<>();
-        //Queue'ya nasil eleman eklenir?
-        //1)add(): Belirtilen öğeyi kuyruğa ekler.
-        storage.add("sut");
-        storage.add("et");
-        storage.add("yumurta");
-        storage.add("peynir");
-        //storage.add(null);
-        System.out.println(storage); //[sut, et, yumurta, peynir] - insertion order
-        //2) remove(): Kuyruğun başındaki öğeyi kuyruktan kaldırır ve döndürür.
-        // Kuyruk boşsa bir istisna fırlatır.
-        String s = storage.remove();
-        System.out.println(s); //sut
-        System.out.println(storage); //[et, yumurta, peynir]
-        //3)peek(): Kuyruğun başındaki öğeyi döndürür, kuyruk boşsa null döner.
-        System.out.println(storage.peek()); //et
-        System.out.println(storage); //[et, yumurta, peynir]
-        //4)clear() metodu, kuyruğun içindeki tüm öğeleri kaldırır, böylece kuyruk boş bir duruma gelir.
-        storage.clear();
-        System.out.println(storage); //[]
-        //5)poll(): Kuyruğun başındaki öğeyi kuyruktan kaldırır ve döndürür. Kuyruk boşsa null döner.
-        System.out.println(storage.poll()); //null
-        //6)element(): Kuyruğun başındaki öğeyi döndürür, ancak kuyruk boşsa bir istisna fırlatır.
-        //System.out.println(storage.element()); HATA cunku queue bos
-        //-------------------------------
-        // PriorityQueue (oncelik kuyrugu), bir FIFO (first in first out) yapısı ile nesneleri
-        // öncelik sırasına göre sıralayan bir kuyruk (Queue) aracıdır.
-        // Yani, en yüksek önceliğe sahip olan nesne, her zaman ilk olarak çıkar.
-        //Örneğin, sayıları içeren bir PriorityQueue kullanıyorsanız,
-        // sayılar kendi doğal sıralamalarına göre önceliklendirilir.
-        //Gerçek hayattan bir örnek olarak, bir hastanedeki hastaların acil servise giriş sırası
-        // priorityQueue olarak temsil edilebilir. Hastalar, aciliyet derecelerine göre sıralanır.
-        // Aciliyeti en yüksek olan hasta, her zaman ilk olarak tedavi edilir.
-        //PriorityQueue nasil olusturulur?
 
-        PriorityQueue<String> emergencyQueue = new PriorityQueue<>();
-        //PriorityQueue'ya nasil eleman eklenir?
-        //add(): Belirtilen öğeyi kuyruğa ekler.
-        emergencyQueue.add("Mehmet");
-        emergencyQueue.add("Mahmut");
-        emergencyQueue.add("Ekrem");
-        emergencyQueue.add("Oya");
-        emergencyQueue.add("Tansu");
-        //emergencyQueue.add(null); HATA
-        System.out.println(emergencyQueue); //[Ekrem, Mehmet, Mahmut, Oya, Tansu]
-        //-----------------------------
-        //Deque (Double-Ended Queue), hem başından hem de sonundan eleman eklemeye
-        // ve çıkartmaya izin veren bir veri yapısıdır.
-        // Deque, FIFO (first in first out) veya LIFO (last in first out) olarak sıralanabilir.
-        //Java'da deque'ler, Deque interface'iyle temsil edilir. Deque arabirimini uygulayan en yaygın class’lar
-        // ArrayDeque ve LinkedList sınıflarıdır.
+//--------------------------------------------------------------------------------------D25-COLLECTIONS-MAPS01—
 //1) Map’ler sozluk gibidir. Aciklamalidir.  orn: Ali = 13 .Map’ler collections degildir. Ordan miras almaz
 //2) Sol taraf yani key'ler tekrarsizdir. Value tarafi tekrarli olabilir.
 //3) Key tarafi icin Set kullanilir. Values için ise genellikle Collection yapısı kullanılır.
@@ -1339,37 +1386,21 @@ System.out.println(hs); //[Kerem, Sinan, Tuba, Onur]
 //Map nasil olusturulur?
 //put():Bir key-value çiftini map'e ekler.
 //1) HashMap: Key-value çiftlerini rastgele bir sırayla depolayan bir Map türüdür.En hizlisidir.
-        HashMap<String, Integer> myMap = new HashMap<>();
-        myMap.put("Ali Can", 13);
 //Sadece 'key' degerlerini nasil alabiliriz?
-//keySet(): Map'teki tüm key'lerin bir set'ini döndürür.Set'in sırası rastgeledir.//Sadece 'value' degerlerini nasil alabiliriz?
-//values():Map'teki tüm value'ların bir collection'ını döndürür.Collection'ın sırası rastgeledir.//get(): Bir key'e karşılık gelen değeri döndürür.key verirsiniz value’sunu getirir//entrySet() metodu, HashMap'in tüm degerlerini içeren (key-value) bir Set döndürür.
+//keySet(): Map'teki tüm key'lerin bir set'ini döndürür.Set'in sırası rastgeledir.
+//Sadece 'value' degerlerini nasil alabiliriz?
+//values():Map'teki tüm value'ların bir collection'ını döndürür.Collection'ın sırası rastgeledir.
+//get(): Bir key'e karşılık gelen değeri döndürür.key verirsiniz value’sunu getirir
+//entrySet() metodu, HashMap'in tüm degerlerini içeren (key-value) bir Set döndürür.
 // Dongu gibi ayri satirlarda yazdirir.Cunku Loop'lar direkt Map'ler ile kullanilamaz.
 //Bu yuzden ozel method gelistirilmis. Set’in icinde Map yapisi saklanir.
 //Java'da Map.Entry kullanarak bir Set üzerinde loop yapabilir ve
 // hem anahtarları (getKey()) hem de değerleri (getValue()) elde edebilirsiniz.
-/* removeFirst(), verilerin belirli bir düzen içinde saklandığı ve işlendiği bir veri yapısıdır.
-        Ilk giren ilk çıkar (FIFO-first in first out) prensibine dayanır, yani ilk eklenen obje ilk çıkarılır.
-        Queue, sıralı işlemler ve verilerin işlenmesi için kullanılır. Araya eleman eklemek mümkün değildir.
-        Gerçek dünyadan birkaç örnek:
-     Sıra Kuyruğu (Queue): Sıra bekleyenlerin önünde olan kişi önce hizmet alır. Bir örnek olarak,
-         bir fast-food restoranındaki siparişlerin işlenmesini düşünebilirsiniz.
-         İlk gelen sipariş, ilk hazırlanan ve teslim edilen sipariştir.
-     Bilet Sırası: Bir konser veya etkinlik için bilet almak isteyen kişiler sıraya girerler.
-         Biletler, sırayla satılır ve ilk gelen kişi ilk biletini alır.
-     Çağrı Sırası: Müşteri hizmetleri çağrı merkezindeki müşteriler, sırayla operatörlere bağlanır.
-         İlk çağrı bekleyeni önce konuşur, ardından sıradaki çağrı alınır.
-     Dosya İşleme: Bilgisayar işletim sistemleri ve uygulamalar, dosyaları sırayla işlerler.
-         Bir dosya işlem tamamlandığında, sıradaki dosya işlenir.
-    Kuyruğun çalışma mantığı, elemanların kuyruğun sonuna eklenip başından çıkarılması şeklinde gerçekleşir.
-    Queue, sıralı işlemler veya veriler gerektiğinde kullanışlıdır.
-    Queue interface’i, LinkedList ve PriorityQueue gibi farklı class’lar tarafından uygulanabilir.*/
-        //Queue nasil olusturulur?
-        Queue<String> storage = new LinkedList<>();
-        //Queue'ya nasil eleman eklenir?
-        //1)add(): Belirtilen öğeyi kuyruğa ekler.
+//-------------------------------------------------------------------D25-COLLECTIONS---Queue01
+//Queue'ya nasil eleman eklenir?
+//1)add(): Belirtilen öğeyi kuyruğa ekler.
 //2) remove(): Kuyruğun başındaki öğeyi kuyruktan kaldırır ve döndürür.
-        // Kuyruk boşsa bir istisna fırlatır.
+// Kuyruk boşsa bir istisna fırlatır.
 //3)peek(): Kuyruğun başındaki öğeyi döndürür, kuyruk boşsa null döner.
 //4)clear() metodu, kuyruğun içindeki tüm öğeleri kaldırır, böylece kuyruk boş bir duruma gelir.
 //5)poll(): Kuyruğun başındaki öğeyi kuyruktan kaldırır ve döndürür. Kuyruk boşsa null döner.
@@ -1380,18 +1411,22 @@ System.out.println(hs); //[Kerem, Sinan, Tuba, Onur]
 // PriorityQueue (oncelik kuyrugu), bir FIFO (first in first out) yapısı ile nesneleri
 // öncelik sırasına göre sıralayan bir kuyruk (Queue) aracıdır.
 // Yani, en yüksek önceliğe sahip olan nesne, her zaman ilk olarak çıkar.
-
 //Örneğin, sayıları içeren bir PriorityQueue kullanıyorsanız,
 // sayılar kendi doğal sıralamalarına göre önceliklendirilir.
-
 //Gerçek hayattan bir örnek olarak, bir hastanedeki hastaların acil servise giriş sırası
 // priorityQueue olarak temsil edilebilir. Hastalar, aciliyet derecelerine göre sıralanır.
 // Aciliyeti en yüksek olan hasta, her zaman ilk olarak tedavi edilir.
-
 //PriorityQueue nasil olusturulur?
-/PriorityQueue'ya nasil eleman eklenir?
-        //add(): Belirtilen öğeyi kuyruğa ekler. emergencyQueue.add("Mehmet");
+PriorityQueue<String> emergencyQueue = new PriorityQueue<>();
+//PriorityQueue'ya nasil eleman eklenir?
+//add(): Belirtilen öğeyi kuyruğa ekler.
+emergencyQueue.add("Mehmet");
 emergencyQueue.add("Mahmut");
+emergencyQueue.add("Ekrem");
+emergencyQueue.add("Oya");
+emergencyQueue.add("Tansu");
+//emergencyQueue.add(null); HATA
+System.out.println(emergencyQueue); //[Ekrem, Mehmet, Mahmut, Oya, Tansu]
 //-----------------------------
 //Deque (Double-Ended Queue), hem başından hem de sonundan eleman eklemeye
 // ve çıkartmaya izin veren bir veri yapısıdır.
@@ -1404,14 +1439,15 @@ Deque<String> d = new LinkedList<>();
 //1) add(): Belirtilen öğeyi ekler.
 d.add("Mehmet");
 d.add("Mahmut");
+d.add("Ekrem");
+d.add("Oya");
+d.add("Tansu");
+System.out.println(d); //[Mehmet, Mahmut, Ekrem, Oya, Tansu]
 //2) addFirst(E e): Deque'in başına bir öğe ekler. Dönüş türü void'dir çünkü
 // sadece eklemeyi gerçekleştirir ve değer döndürmez.
 //3) addLast(E e): Deque'nin sonuna bir öğe ekler. Dönüş türü yine void'dir.
-d.addLast("Hasan");
 //4)removeFirst(): Deque'nin başındaki öğeyi kaldırır ve kaldırılan öğeyi döndürür.
 // Bu method E türünde bir değer döndürür.(Burda String)
-System.out.println(d.removeFirst()); //Ali
-System.out.println(d); //[Mehmet, Mahmut, Ekrem, Oya, Tansu, Hasan]
 //--------------------------
 //ArrayDeque, Java'da çift yönlü kuyruk (double-ended queue) yapısını temsil eder
 // (verilerini bir dizi (array) içinde saklar) ve Deque arayüzünü uygular.
@@ -1419,51 +1455,60 @@ System.out.println(d); //[Mehmet, Mahmut, Ekrem, Oya, Tansu, Hasan]
 // ArrayDeque, LinkedList'e kıyasla daha yüksek performans sunar çünkü içerikleri için dizi tabanlı
 // bir yapı kullanır.ArrayDeque, başta ve sonda hızlı ekleme/çıkarma işlemleri için idealdir.
 //ArrayDeque Nasıl Oluşturulur?
-ArrayDeque<String> ad = new ArrayDeque<>();
 //Eleman Nasıl Eklenir?
 // Baştan Ekleme: addFirst()
 // Sondan Ekleme: addLast()
-ad.addFirst("ilk");
-ad.addLast("son");
-System.out.println(ad); //[ilk, son]
 //Eleman Çıkarma:
 //removeFirst(): Kuyruğun başından bir eleman çıkarır.
 //removeLast(): Kuyruğun sonundan bir eleman çıkarır.
-String a = ad.removeFirst();
-System.out.println(a); //ilk
-System.out.println(ad); //[son]
-String z = ad.removeLast();
-System.out.println(z); //son
-System.out.println(ad); //[]
 //ODEV: ArrayDeque’de belirli bir indekse veya araya doğrudan eleman eklemek için bir metod bulunur mu?
+Cevap :ArrayDeque sınıfı, belirli bir indekse veya araya doğrudan eleman eklemek için bir metod sağlamaz. Sadece elemanları başa veya sona ekleyebilirsiniz. Belirli bir indekse eleman eklemek isterseniz, ArrayList gibi başka bir veri yapısını kullanmanız önerilir. Eğer ArrayDeque ile yapmak isterseniz, ArrayDeque'yi bir ArrayList'e dönüştürüp, istediğiniz indekse ekleme yapabilir ve sonra tekrar ArrayDeque'ye dönüştürebilirsiniz; ancak bu yöntem verimli değildir.
+//-------------------------------------------------------------D25-COLLECTIONS-SETS01
 //TreeSet'ler cok yavas, biraz hizlandirabilir miyiz?
 //Elemanlari eklerken en hizli olandan (HashSet) yardim alalim.
+//-----------------------------------------------------------------------------------D26-MAPS-EXCEPTIONS-MAPS02
 //------------------
 //1) replace() methodu, value’lari key’leri kullanarak update etmeye yarar
 //Aynı işlemi put ile yapmak da teknik olarak işe yarar, ancak replace kullanmak,
 // kodunuzu okuyan diğer geliştiricilere ve size daha net bilgi verir.
+stdAges.replace("Tom", 39);
+System.out.println(stdAges); //{Can=19, Ahmet=41, Tom=39, Veli=63, Ali=18}
+//------------------
+//2) replace() methodu, eski deger kontrolu yaparakta calisir
+stdAges.replace("Tom", 21, 45);
+System.out.println(stdAges); //Degisiklik olmayacak cunku eski deger 21 degil{Can=19, Ahmet=41, Tom=39, Veli=63, Ali=18}
+stdAges.replace("Tom", 39, 45);
+System.out.println(stdAges); //Degisiklik olacak cunku eski deger 39. {Can=19, Ahmet=41, Tom=45, Veli=63, Ali=18}
 //------------------
 //3)putIfAbsent() metodu, belirtilen key ve value çiftini, key Map'te yoksa Map'e ekler.
 // Key Map'te zaten varsa, metodun hiçbir etkisi olmaz.
+stdAges.putIfAbsent("Tom", 77);
+System.out.println(stdAges); //{Can=19, Ahmet=41, Tom=45, Veli=63, Ali=18}
+//Tom key'i map'te oldugu icin "Tom", 77'yi eklemedi
+stdAges.putIfAbsent("Ayse", 23);
+System.out.println(stdAges); //{Can=19, Ahmet=41, Tom=45, Veli=63, Ayse=23, Ali=18}
+//Ayse key'i map'te olmadigi icin "Ayse", 23 eklendi
 //------------------
 //4- get() ve getOrDefault() method'lari eger aranan eleman map'te var ise, ikisi de ayni isi yapar
 //key verirsiniz, size value verir. Ancak getOrDefault() metodu, anahtar bulunamadığında
 // bir varsayılan değer sağlama avantajına sahiptir.
+System.out.println(stdAges.get("Tom")); //45
+System.out.println(stdAges.getOrDefault("Tom", 18)); //45, Tom map'te var
+//Tom'un orjinal degerini verdi
+System.out.println(stdAges.get("Jerry")); //null
+System.out.println(stdAges.getOrDefault("Jerry", 0)); //18
 //------------------
 //5)containsKey() metodu, Map'te bir key olup olmadığını kontrol eder.
 //containsValue() metodu ise, Map'te bir value olup olmadığını kontrol eder.
 //Boolean return ederler
+//-------------------------------------------------------------------------------------------MAPS04-----------------
 //Thread Safe, Multi Thread, Synchronized kavramlarini inceleyelim
-
-/*
 Thread Safe: Aynı anda birçok iş parçacığı tarafından güvenli bir şekilde erişilebilen yapılar.
 Veri yarışlarını ve tutarsızlıkları önler.
-
 Multi Thread: Aynı anda birden fazla iş parçacığı tarafından çalıştırılabilen programlar.
 Paralel işleme ve performans artışı sağlar.
-
 Synchronized: Aynı anda sadece bir iş parçacığı tarafından erişilebilen metodlar veya kod blokları.
-Eşzamanlılık sorunlarını ve veri tutarsızlıklarını önler.*/
+Eşzamanlılık sorunlarını ve veri tutarsızlıklarını önler.
 /*HashMap, HashTable ve ConcurrentHashMap arasindaki fark nedir?
 1- HashMap
     a) Thread Safety:
@@ -1477,8 +1522,8 @@ Synchronized değildir, yani aynı anda birden fazla iş parçacığı tarafınd
     d) Null Key/Value:
 Bir null key ve birden fazla null value kabul eder.
     e) Performans:
-En hızlısıdır çünkü synchronized değildir. */
-/*2- Hashtable
+En hızlısıdır çünkü synchronized değildir.
+2- Hashtable
     a) Thread Safety:
 Thread-safe'tir.
 Synchronized yapısı nedeniyle aynı anda sadece bir iş parçacığı tarafından kullanılabilir.
@@ -1489,8 +1534,8 @@ Synchronized'dir, yani tüm metotlar synchronized olarak işaretlenmiştir ve ay
     d) Null Key/Value:
 Ne null key ne de null value kabul eder. NullPointerException atar.
     e) Performans:
-HashMap'ten daha yavaştır çünkü synchronized'dir*/
-/*3- ConcurrentHashMap
+HashMap'ten daha yavaştır çünkü synchronized'dir
+3- ConcurrentHashMap
     a) Thread Safety:
 Thread-safe'tir.
 Segment-based locking kullanarak senkronizasyon sağlar.
@@ -1503,7 +1548,7 @@ Synchronized'dir, ancak segment-based locking sayesinde daha iyi performans suna
 Ne null key ne de null value kabul eder. NullPointerException atar.
     e) Performans:
 HashTable'dan daha hızlıdır çünkü segment-based locking kullanır.
-Çok iş parçacıklı ortamlar için optimize edilmiştir.*/
+Çok iş parçacıklı ortamlar için optimize edilmiştir.
 /*HashMap, Hashtable ve ConcurrentHashMap ne zaman kullanılir?
 1- HashMap:
 Tek iş parçacıklı uygulamalar için idealdir  çünkü synchronized değildir(ek bir işlem ve zaman gerektirmez)
@@ -1516,100 +1561,97 @@ Yeni projeler için genellikle önerilmez çünkü daha modern ve performanslı 
 3- ConcurrentHashMap:
 Modern ve yüksek performanslı çok iş parçacıklı uygulamalar için en iyi seçenektir.
 (Web sunucuları, veri işlem sistemleri, yüksek trafikli uygulamalar)
-Thread safety ve performansın önemli olduğu her durumda tercih edilir.*/
+Thread safety ve performansın önemli olduğu her durumda tercih edilir.
 //studentGrades.put(null, 50); //Hata
 //studentGrades.put("Ahmet", null); //Hata
-//--------------------
-/*1) TreeMap’ler entry’leri natural order’a gore siraya koyar, bu yuzden yavastirlar
+// ConcurrentHashMap oluşturma
+ConcurrentHashMap<String, Integer> stock = new ConcurrentHashMap<>();
+// Eleman ekleme
+stock.put("Elma", 10);
+stock.put("Muz", 20);
+//Elemana erisme
+System.out.println("Elmanin stok miktari: " + stock.get("Elma")); //Elmanin stok miktari: 10
+//Guncelleme veya ekleme
+stock.putIfAbsent("Cilek", 30); //Cilek yoksa ekle
+System.out.println(stock); //{Muz=20, Elma=10, Cilek=30}
+stock.replace("Muz", 20, 25);
+System.out.println(stock); //{Muz=25, Elma=10, Cilek=30}
+//Eleman silme
+stock.remove("Elma");
+System.out.println(stock); //{Muz=25, Cilek=30}
+//--------------------/*
+1) TreeMap’ler entry’leri natural order’a gore siraya koyar, bu yuzden yavastirlar
 2) TreeMap’ler  thread-safe ve synchronized degildir.
 3) TreeMap’lerin key’lerinde null kullanilamaz(Comparator istisnasi var ama onerilmez),
 ama value kisimlarinda istediginiz kadar kullanabilirsiniz
 4) TreeMapler key’e bakarak siralama yapar
- */
-/*Exception: Kod çalıştırıldığında akışı bozan hatalardır. "Beklenmedik sorunlar" demektir.
-Her exception, hata mesajını ve hata türüne ait bilgiyi içinde bulundurur.
-1- exception (İstisnalar), normal kod yürütme akışını bozan hatalardir.
-2- exception bir classtir. Methodlari vardir. Kendi icinde hata kodlari, bilgi mesajlari vardir.
-Ornegin; Bir classtaki bir method cagirildigi zaman kod calismaya baslar. Bu andan itibaren kodlar satir satir
-okunmaya baslar. Ve kodlarda bir hata varsa, exception durumu olusur.
-Tabi bu hatalari developer onceden ongorup handler etmeli, duzeltmelidir ama kullanici programimizi
-kullanirken ongorulmeyen durumlar her zaman olusabilir. Bir hata olustugunda neden kaynaklandigini
-ogrenip cozmek, o an cozulemiyorsa da sistemin durmayip calismasinin devam etmesi icin alternatif
-cozumler uretmek gerekiyor
-3- Bir exception oluştuğunda, kod yürütme durur. Exception’lar, hata ayıklama günlüklerinde(log) oturum açar.*/
-/*4- Exception Handling, Java’da, akışı kesintiye uğratmadan kodumuzdaki istenmeyen istisnaları
-veya sorunları işlememize olanak tanıyan bir yöntemdir
-5- Exception denince akliniza 3 seyin gelmesi lazim. try, catch ve finally (optional).
-6- Kod başarılı bir şekilde çalışmadığında bile, kullanıcı deneyiminin sorunsuz olmasını sağlamak için,
-tüm yürütmeleri bir try catch ifadesine sarmak programlama dünyasında en iyi uygulama olarak kabul edilir.
-Ancak, tüm kodları körü körüne try-catch blokları içine almak her zaman en iyi pratik değildir.
-Bu, hataları maskeleyebilir ve programın gerçek hataları gizlemesine yol açabilir.
-https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html */
-//1) ArithmeticException : Matematik kurallarinda herhangi bir hata yaparsaniz bu exception'i alirsiniz
-//division(5,0);//try-catch kullandiginizda sistem tarafindan "try" bolumu calistirilir,
+TreeMap<String, Integer> countryPopulation = new TreeMap<>();
+countryPopulation.put("Germany", 83000000);
+countryPopulation.put("USA", 400000000);
+countryPopulation.put("Turkiye", 83000000);
+countryPopulation.put("Netherland", 18000000);
+//countryPopulation.put(null, 18000000); HATA
+countryPopulation.put("Italy", null);
+countryPopulation.put("France", null);
+System.out.println(countryPopulation);
+//{France=null, Germany=83000000, Italy=null, Netherland=18000000, Turkiye=83000000, USA=400000000}
+//-----------------------------------------------------------------------------------------------D27 EXCEPTIONS—E01
+//try-catch kullandiginizda sistem tarafindan "try" bolumu calistirilir,
 // eger "try" bolumunde hata ile karsilasilmazsa "catch" blogu hic calismaz
 //Eger "try" bolumunde hata ile karsilasilirsa hata alinan satirda calisma durdurulur
 // ve "catch - yakalamak" bolumu calismaya baslar.
-//Throw Exceptions : a/b gibi islem sirasinda degilde, istenmeyen durumu gorunce hatayi biz olusturalim
+//1)Throw Exceptions : a/b gibi islem sirasinda degilde, istenmeyen durumu gorunce hatayi biz olusturalim
 //2) NumberFormatException : Bir metnin sayisal bir deger olarak donusturulememesi durumunda olusur
 //3) StringIndexOutOfBoundsException, bir String nesnesinin, karakter dizisindeki
 // geçersiz bir indekse erişmeye çalışıldığında ortaya çıkan bir istisna türüdür.
 //4) ArrayIndexOutOfBoundsException: Bir dizi elemanına erişilmeye çalışıldığında,
 // dizi boyutunu aşan bir indeks kullanıldığında meydana gelir.
-//-------------------------------------------------------------------------------------------------------------------------------------------
-//d28_exception_enum:
+//---------------------------------------------------------------------------D28EXCEPTION_ENUM-
 /*Java'da enum (enumeration - sıralama), bir dizi sabit değeri temsil etmek için kullanılan özel bir class türüdür.
-   enum yapısı, belirli bir değer kümesini temsil eden sabitleri (constants) tanımlamak için kullanılır.
-   Degisme ihtimali olmayan verileri tutarlar.(ay, gun isimleri gibi) ve buyuk harfle yazilirlar.
+enum yapısı, belirli bir değer kümesini temsil eden sabitleri (constants) tanımlamak için kullanılır.
+Degisme ihtimali olmayan verileri tutarlar.(ay, gun isimleri gibi) ve buyuk harfle yazilirlar.
 enum'un temel avantajları şunlardır:
-    Tip Güvenliği: enum ile tanımlanan bir değişken, sadece belirtilen enum değerlerinden birine sahip olabilir.
-    Bu, geçersiz değerlerin atanmasını engeller.
-    Kod Okunabilirliği: enum kullanımı, kodun okunabilirliğini artırır, çünkü anlamlı isimlere sahip
-    sabitleri kullanabilirsiniz.
-    Kod tekrarını azaltır: Enumlar, aynı sabit değerleri birden çok kez tanımlamayı önler.
-    Bu, kod tekrarını azaltır. Ve dis kaynaklara bagimliligi kaldirir.
-    Ornegin illeri app'inizde saklarsiniz, gerektiginde cagirir kullanirsiniz.
-    Bir siteden cekmezsiniz. Cunku site cokmus olabilir*/
-    //---------------------------------------------------------
-    /* Expected 0 arguments but found 3 hatası,Sehirler enum yapısında. Her bir enum değeri için 3 argüman sağladık
-     (int, String, String). Bu argümanları kabul eden bir yapıcı (constructor) tanımlamanız gerekiyor.
-    ama once 3 tane variable olusturalim  private, bir değişkenin yalnızca class'in içinden erişilebilir olmasını sağlar.
-    Bu, değişkenin dışarıdan erişilmesini ve değiştirilmesini önler.(encapsulation)  final, bir değişkenin değerinin değiştirilemeyeceğini belirtir.  Bu, plaka kodunun yalnızca bir kez ayarlanmasını sağlar.
-    Açıklama: Enum'lar, önceden tanımlanmış sabit değerleri temsil eden yapılardir.
-    Bu nedenle, plaka kodu, yalnızca enum'un içinden ayarlanmalı ve değiştirilmelidir.
-    Dışarıdan erişilmesi veya değiştirilmesi, enum'un tutarlılığını bozabilir.*/
+ Tip Güvenliği: enum ile tanımlanan bir değişken, sadece belirtilen enum değerlerinden birine sahip olabilir.
+ Bu, geçersiz değerlerin atanmasını engeller.
+ Kod Okunabilirliği: enum kullanımı, kodun okunabilirliğini artırır, çünkü anlamlı isimlere sahip
+ sabitleri kullanabilirsiniz.
+ Kod tekrarını azaltır: Enumlar, aynı sabit değerleri birden çok kez tanımlamayı önler.
+ Bu, kod tekrarını azaltır. Ve dis kaynaklara bagimliligi kaldirir.
+ Ornegin illeri app’inizde saklarsiniz, gerektiginde cagirir kullanirsiniz.
+ Bir siteden cekmezsiniz. Cunku site cokmus olabilir*/
+ //---------------
+ /* Expected 0 arguments but found 3 hatası,Cities enum yapısında. Her bir enum değeri için 3 argüman sağladık
+  (int, String, String). Bu argümanları kabul eden bir yapıcı (constructor) tanımlamanız gerekiyor.
+ ama once 3 tane variable olusturalim private, bir değişkenin yalnızca class'in içinden erişilebilir olmasını sağlar.
+ Bu, değişkenin dışarıdan erişilmesini ve değiştirilmesini önler.(encapsulation) final, bir değişkenin değerinin değiştirilemeyeceğini belirtir. Bu, plaka kodunun yalnızca bir kez ayarlanmasını sağlar.
+ Açıklama: Enum'lar, önceden tanımlanmış sabit değerleri temsil eden yapılardir.
+ Bu nedenle, plaka kodu, yalnızca enum'un içinden ayarlanmalı ve değiştirilmelidir.
+ Dışarıdan erişilmesi veya değiştirilmesi, enum'un tutarlılığını bozabilir.*/
 
-    //----------------------------------------------------------------------------
-       1) enum'daki datalar sabittir
-    2) enum'dan new keywordu ile yeni bir object olusturamazsiniz
-    3) Cunku enum icine koymus oldugunuz her bir sabit data bu classtan olusturulmus bir object mantigi ile calisir
-    4) enum icerisine koymus oldugumuz her bir sabit default olarak public static ve final'dir.
-    (Burada iller kastediliyor-enum tanımlarken bu anahtar kelimeleri sabitlerin önüne yazmak gerekmez
-    ve yazılamaz da; dilin sözdizimi bunu desteklemez)
-    5) Bu nedenle enum icindeki her bir sabit dataya enum ismi yazarak ulasabilirsiniz
-    6) enum'daki constructor yeni bir object olusturmak icin degil, enum'in icindeki her bir sabit
-    datanin icindeki variable'lari baslatmak icin kullanilir
-   --------------------------------------------------------------------------------------------
-//5) NullPointerException:(bos isaretcisi) Null degerindeki bir variable referans olarak kullanildiginda olusur
-//null degeriyle length() methodunu kullanmayiniz
+ //-----------
+ 1) enum’daki datalar sabittir
+ 2) enum’dan new keywordu ile yeni bir object olusturamazsiniz
+ 3) Cunku enum icine koymus oldugunuz her bir sabit data bu classtan olusturulmus bir object mantigi ile calisir
+ 4) enum icerisine koymus oldugumuz her bir sabit default olarak public static ve final’dir.
+ (Burada iller kastediliyor-enum tanımlarken bu anahtar kelimeleri sabitlerin önüne yazmak gerekmez
+ ve yazılamaz da; dilin sözdizimi bunu desteklemez)
+ 5) Bu nedenle enum icindeki her bir sabit dataya enum ismi yazarak ulasabilirsiniz
+ 6) enum’daki constructor yeni bir object olusturmak icin degil, enum’in icindeki her bir sabit
+ datanin icindeki variable’lari baslatmak icin kullanilir */
+//5) NullPointerException:(bos isaretcisi) Null degerindeki bir variable referans olarak kullanildiginda oluşur
 //6) IllegalArgumentException, bir metodun geçersiz bir argüman aldığında oluşan bir hata türüdür.
-//Girdigimiz yasi konsola yazdiran bir method olusturalim
-
 //Exception olustugunda bunu ilan eder ve geri cekilirsiniz, buna da throw exception denir.
 // try-catch kullanmazsiniz.Burda programin durmasi kesinlikle isteniyordur.
 /*1)Run butonuna bastiktan sonra console'da alinan Exception'lara Runtime Exception denir
   ArithmeticException, NullPointerException vs...
   RunTime Exception’lara Unchecked Exception’da denir. (run butonundan once kontrol edilmemis)
-
 2) Code yazarken kirmizi alt cizgi seklinde alinan Exceptionlar’da vardir. Bunlara da Compile Time Exception
 denir,  Compile Time Exception’lara Checked Exception’da denir.(run butonuna basmadan once kontrol var)*/
-
 //---------------
 /*Aciklama: FileInputStream kullanacagiz. Bir class'tir.FileInputStream sınıfı, Java'da dosyaları bayt (byte) bazlı
 okumak için kullanılır. Bu sınıf, Java'nın java.io paketinin bir parçasıdır.
 Genellikle metin dosyaları, resimler, ses dosyaları vb. dosya türlerini okumak için kullanılır.
 Not: ASCII tablosundaki "A" ya da herhangi bir başka karakter 1 byte'a eşittir.*/
-/*
 interview sorusu
 throw ile throws arasindaki farklar nelerdir?
 1) throw method body’si icinde, throws ise method parantezinden sonra kullanilir
@@ -1620,8 +1662,6 @@ throw ile throws arasindaki farklar nelerdir?
 4) throw belli sartlar icin Exception firlatmada kullanilir (age negatif olamaz diye biz sart koyduk)
     throws ise bir methodun belli bir Exception’u firlatabileceğini belirtmek icin kullanilir
     (olusabilecek bir hataya karsi yazilir)
-*/
-
 //read() metodu dosyadan bir bayt (byte) okur (tam sayı değerini-0-255 arasında)
 //Dosyada 'A' karakteri varsa, read() metodu 65 değerini döndürecektir.
 //Dosyada 'a' karakteri varsa, read() metodu 97 değerini döndürecektir.
@@ -1629,268 +1669,108 @@ throw ile throws arasindaki farklar nelerdir?
 //read, dosya sonuna ulaşıldığında -1 değerini döndürur.
 //Not: Bir onceki uygulamamizda method signature icine exception eklemesi yaptik.
 // Bu seferde try-catch kullanalim
-
-/*
-1) FileNotFoundException ve IOException Compile Time Exception'lardir. Yani kodu yazarken hata aliriz.
+1)	FileNotFoundException ve IOException Compile Time Exception'lardir. Yani kodu yazarken hata aliriz.
 2) IOException Class, FileNotFoundException class'in parent'idir yani
     istenirse FileNotFoundException yerine IOException'da kullanilabilir
 3) IOException ve FileNotFoundException beraber kullanilacak ise FileNotFoundException üstte olmalidir
- */
 //finally
-        /*
-        1) finally bloğu genellikle;
-         a) Kaynakların serbest bırakılması :  (veritabani baglantisinin kesilmesi, close() methodu ile),
-             Özellikle eski Java versiyonlarında (Java 7 öncesi), veritabanı bağlantıları gibi kaynaklar
-             manuel olarak kapatılmalıydı. Bu tür kaynaklar, uzun süre açık bırakılırsa sistemde gereksiz
-             yere yer kaplar ve potansiyel performans sorunlarına neden olabilir. Java 7 sonrasi otomatiklesti ( try-with-resources ifadesi ile)
-         b) Dosyaların kapatılması :  (az once dosya baglantisi yapmistik.  fis.close(); ile kapatilabilirdi)
-            Dosyaları okuma veya yazma işlemi bittikten sonra kapatmak gereklidir. Aksi halde, dosya kolları
-             gereksiz yere sistemde yer kaplar.
-         c) Her durumda çalıştırılması gereken temizleme işlemleri :
-         (Bazı işlemler, başarılı olsun ya da olmasın, belirli bir sürecin sonunda her zaman yapılmalıdır.
-        Örneğin, bir log dosyasına her işlemin başlangıç ve bitiş zamanını kaydetmek gibi. BufferedWriter ile)
-         finally icin bir senaryo olusturalim; a/b bolumu ile bir index bulalim ve bu index'i kullanarak
-         Array'deki elemani bulalim
-         */
-        // Coklu finally block kullanilamaz
-        //java da try + bir catch, try + birden fazla catch, try + catch + finally,
-        // try + finally kullanilabilir.
+1) finally bloğu genellikle;
+ a) Kaynakların serbest bırakılması :  (veritabani baglantisinin kesilmesi, close() methodu ile),
+Özellikle eski Java versiyonlarında (Java 7 öncesi), veritabanı bağlantıları gibi kaynaklar
+manuel olarak kapatılmalıydı. Bu tür kaynaklar, uzun süre açık bırakılırsa sistemde gereksiz
+yere yer kaplar ve potansiyel performans sorunlarına neden olabilir. Java 7 sonrasi otomatiklesti ( try-with-resources ifadesi ile)
+ b) Dosyaların kapatılması :  (az once dosya baglantisi yapmistik.  fis.close(); ile kapatilabilirdi)
+ Dosyaları okuma veya yazma işlemi bittikten sonra kapatmak gereklidir. Aksi halde, dosya kolları
+ gereksiz yere sistemde yer kaplar.
+ c) Her durumda çalıştırılması gereken temizleme işlemleri :
+ (Bazı işlemler, başarılı olsun ya da olmasın, belirli bir sürecin sonunda her zaman yapılmalıdır.
+Örneğin, bir log dosyasına her işlemin başlangıç ve bitiş zamanını kaydetmek gibi. BufferedWriter ile)
+ finally icin bir senaryo olusturalim; a/b bolumu ile bir index bulalim ve bu index'i kullanarak
+ Array'deki elemani bulalim
+// Coklu finally block kullanilamaz
+//java da try + bir catch, try + birden fazla catch, try + catch + finally,
+// try + finally kullanilabilir.
+//-----------------------------------------------------------------------D28-EXCEPTION-ENUM--EnumRunner
+       //values() methodu enum icindeki tum datalari bir Array icinde bize verir
 //İşgörüşmesi notu olabilir sık sık okumalıyız...
-    /*Java'da final, finally ve finalize() terimleri farklı amaçlarla kullanılan üç farklı kavramı temsil eder.
-	final:
-    Değişkenler İçin: final keyword'uyle tanımlanan bir variable sadece bir kez değer alabilir.
-    Bu, değişkenin değerinin sonradan değiştirilemeyeceği anlamına gelir. Yani, bu değişken sabittir (constant)
-    Metotlar İçin: final keyword'uyle tanımlanan bir metot, child class'lar tarafından
-    override edilemez.
-    Class'lar İçin: final keyword'uyle tanımlanan bir class, genişletilemez (extends edilemez).
-    Yani bu class'in child'i olmaz.
-	finally:
-    finally bloğu, try-catch yapısının bir parçasıdır. Bu blok, try bloğunda bir istisna oluşsa da
-    oluşmasa da her zaman çalıştırılır.Genellikle kaynakların serbest bırakılması,
-    dosyaların kapatılması gibi temizleme işlemleri için kullanılır.
-	finalize():
-    Bu, Object sınıfında tanımlanan bir metottur ve varsayılan olarak hiçbir işlem yapmaz.
-    Bir nesne bellekten kaldırılmadan hemen önce Garbage Collector (Çöp Toplayıcı) tarafından
-    otomatik olarak çağrılır. Genellikle dış kaynakların serbest bırakılması için kullanılır,
-    ancak modern Java uygulamalarında kullanımı önerilmez.*/
-/*
+   /*Java'da final, finally ve finalize() terimleri farklı amaçlarla kullanılan üç farklı kavramı temsil eder.
+final:
+   Değişkenler İçin: final keyword'uyle tanımlanan bir variable sadece bir kez değer alabilir.
+   Bu, değişkenin değerinin sonradan değiştirilemeyeceği anlamına gelir. Yani, bu değişken sabittir (constant)
+   Metotlar İçin: final keyword'uyle tanımlanan bir metot, child class'lar tarafından
+   override edilemez.
+   Class'lar İçin: final keyword'uyle tanımlanan bir class, genişletilemez (extends edilemez).
+   Yani bu class'in child'i olmaz.
+finally:
+   finally bloğu, try-catch yapısının bir parçasıdır. Bu blok, try bloğunda bir istisna oluşsa da
+   oluşmasa da her zaman çalıştırılır.Genellikle kaynakların serbest bırakılması,
+   dosyaların kapatılması gibi temizleme işlemleri için kullanılır.
+finalize():
+   Bu, Object sınıfında tanımlanan bir metottur ve varsayılan olarak hiçbir işlem yapmaz.
+   Bir nesne bellekten kaldırılmadan hemen önce Garbage Collector (Çöp Toplayıcı) tarafından
+   otomatik olarak çağrılır. Genellikle dış kaynakların serbest bırakılması için kullanılır,
+   ancak modern Java uygulamalarında kullanımı önerilmez.
 Kendi istisna (Custom Exception class) class'larinizi oluşturabilirsiniz.
 Bunun için genellikle Exception class'ini ya da daha spesifik bir child sınıfı genişleterek (extends) yeni bir class oluşturursunuz.
-
 Kendi exception class'larinizi oluşturmanız için birkaç neden vardır:
-
 1- Özelleştirilmiş İstisna Mesajları: Özel istisna sınıflarınızla, belirli bir hata durumu için daha anlamlı ve detaylı hata mesajları oluşturabilirsiniz.
-
 2-Daha İyi Hata Yönetimi: Özel istisnalar sayesinde hataları daha spesifik olarak yakalayıp, uygun şekilde yönetebilirsiniz.
 (ornegin okul app'inde negatif yas girilmesinde hata firlatabilirsiniz)
-
 3- İş Kurallarını Tanımlama: Bazı iş kuralları, standart Java istisnalarıyla doğrudan temsil edilemez.
-
 Bu tür kurallar için özel istisnalar oluşturarak, iş kurallarınızı daha iyi tanımlayabilirsiniz.
 (Java icin negatif veya pozitif yas girilmesinin farki yoktur. Sifira bolme olsaydi vardir) */
-
 /*4- Daha Anlamlı Loglama: Özelleştirilmiş istisna sınıflarınızla, hatanın neden kaynaklandığına dair
 daha spesifik bilgilere sahip olabilir ve bu bilgileri loglarda saklayabilirsiniz.
-
 Örnek olarak, belirli bir yaşın altındaki kullanıcıların sisteme kaydolamayacağı bir uygulamanız varsa,
 bu durumu belirtmek için özel bir istisna oluşturabilirsiniz*/
-
 //Exception yazarsak compile time(checked exceptions) cesidinde bir istisna olusur.(FileNotFoundException gibi)
 // RuntimeException yazsaydik run time cesidinde olusurdu.(ArrayIndexOutOfBoundsException)
 // RuntimeException(unchecked) Exception'ın bir alt sınıfıdir.
-
 //-----------------------------------------------------------------------
 //Ogrenci notu sifirdan kucuk veya yuzden buyuk girilemez senaryosu uzerinden gidelim.
 //Let's go through the scenario where the student's grade cannot be entered less than zero or greater than zero.
---------------------------------------------------------------------------------------------------------------------------------------
-Java'da *immutable* (değişmez) terimi, bir nesnenin oluşturulduktan sonra iç durumunun değiştirilemeyeceğini ifade eder. Yani, immutable bir nesne bir kez oluşturulduğunda, o nesnenin durumu (alanları veya özellikleri) sabit kalır ve değiştirilmesi mümkün olmaz.
-### Immutable Nesnelerin Özellikleri:
-1. *Nesne oluşturulduktan sonra değiştirilemez*:
-   Immutable bir nesneye bir kez veri atandıktan sonra, bu veri değiştirilemez. Bunun anlamı, bir immutable nesnenin iç durumu her zaman sabit kalır.
-2. *Yeni değerler için yeni nesneler oluşturulur*:
-   Eğer immutable bir nesnenin içeriğini değiştirmek istiyorsanız, o nesnenin yeni bir kopyası veya başka bir nesne oluşturmanız gerekir. Bu, mevcut nesnenin üzerinde değişiklik yapmadan yeni bir nesne üretmek anlamına gelir.
-3. *Thread-safe* (İş parçacığı güvenliği):
-   Immutable nesneler thread-safe'dir çünkü bir iş parçacığı bu nesneye erişirken, başka bir iş parçacığı bu nesneyi değiştiremeyeceğinden, veri tutarlılığı açısından herhangi bir risk oluşturmaz.
-### Java'da Immutable Bir Sınıfın Özellikleri:
-Bir sınıfı immutable yapmak için şu kurallara uyulmalıdır:
-1. **Tüm alanlar (fields) final olmalıdır**:
-   Alanlar, nesne oluşturulduktan sonra değiştirilememesi için final olarak tanımlanmalıdır.
-2. **Sınıf final olmalıdır**:
-   Sınıfın kendisi final olarak tanımlanmalıdır ki, başka sınıflar bu sınıfı genişletip (extend edip) değiştiremesin.
-3. *Alanlar (fields) yalnızca constructor (yapıcı) ile atanmalıdır*:
-   Nesne oluşturulurken tüm alanlar constructor aracılığıyla atanmalı ve daha sonra değiştirilmemelidir.
-4. *Getter metotları, derin kopya yapmalıdır*:
-   Eğer sınıf bir referans tipi içeriyorsa, bu tipteki verileri döndüren getter metotları, orijinal verinin kopyasını vermelidir, böylece dışarıdan müdahaleye kapalı olur.
-### Örnek: Immutable Bir Sınıf java
-public final class ImmutablePerson {
-    private final String name;
-    private final int age;
-    // Constructor ile tüm alanlar atanır
-    public ImmutablePerson(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-    // Değişiklik yapılmadan veriler döndürülür
-    public String getName() {
-        return name;
-    }
-    public int getAge() {
-        return age;
-    }
-}
-Yukarıdaki örnekte ImmutablePerson sınıfı immutable bir sınıftır. Tüm alanlar final ve private olarak tanımlanmıştır ve sadece constructor ile atanır. Nesne oluşturulduktan sonra, name ve age değerleri değiştirilemez.
-### Java'da Immutable Nesne Örnekleri:
-1. **String**:
-   Java'da en bilinen immutable sınıf String sınıfıdır. String nesneleri oluşturulduktan sonra değiştirilemez. Eğer bir String üzerinde bir işlem yaparsanız (örneğin, bir string birleştirme), yeni bir String nesnesi oluşturulur, eski String nesnesi değişmez.
-   Örneğin:
-   java
-   String s1 = "Hello";
-   String s2 = s1.concat(" World"); // Yeni bir String oluşturulur
-   System.out.println(s1); // s1 hala "Hello"
-   System.out.println(s2); // s2 "Hello World" olur
-2. *Wrapper Sınıfları*:
-   Java'nın Integer, Boolean, Double gibi temel veri tiplerini sarmalayan sınıflar da immutable'dır. Bir Integer nesnesi oluşturulduktan sonra değeri değiştirilemez.
-### Immutable Olmanın Avantajları:
-1. *Thread-Safe*: Immutable nesneler iş parçacığı güvenliği sunar, çünkü bir iş parçacığı bu nesneyi kullanırken diğer iş parçacıkları nesneyi değiştiremez.
-2. *Kolay Yönetim*: Immutable nesneler, kodun daha anlaşılır ve daha kolay yönetilir olmasını sağlar, çünkü bir kez oluşturulduktan sonra değiştirilmeyeceklerini bilirsiniz.
-3. *Güvenlik*: Immutable nesneler, verilerin istemeden ya da kötü amaçlı bir şekilde değiştirilmesini engeller. Bu, özellikle güvenlik gerektiren uygulamalarda büyük avantaj sağlar.
-### Dezavantajları:
-- Immutable nesneler, çok sık veri değişikliği yapılan durumlarda performans sorunlarına yol açabilir, çünkü her değişiklikte yeni bir nesne oluşturulması gerekir. Bu durum bellek tüketimini artırabilir.
-Immutable "Değişmez", yaratıldıktan sonra değiştirilemeyen veya düzenlenemeyen bir şeyi ifade eder. Terim, aşağıdakiler de dahil olmak üzere çeşitli alanlarda yaygın olarak kullanılır:
-Programlama : Bilgisayar biliminde, değişmez nesne, oluşturulduktan sonra durumu değiştirilemeyen bir nesnedir. Örneğin, birçok programlama dilinde dizeler değişmezdir, yani bir dize oluşturulduktan sonra içeriği değiştirilemez.
-Felsefe : Daha geniş anlamda değişmezlik, zaman içinde değişmeyen veya değiştirilemeyen bir şeyi, örneğin ebedi gerçekler veya ilkeler fikrini tanımlayabilir.
-Finans : Bu terim aynı zamanda blockchain teknolojisinde de kullanılır. Blockchain'de saklanan veriler, deftere eklendikten sonra değiştirilemediği için değiştirilemez kabul edilir.
-"Değişmez" kelimesini sorduğunuzda aklınızda belirli bir bağlam mı vardı?
+//------------------------------------------------------------------------------D29-ITERATORS_LAMBDA--Iterators
+1)  Iterator'ler loop'larin yaptigi ayni isi yapar
+2)  Iterator'lerde sonsuz loop olusma ihtimali yoktur(for each gibi)
+3)  Iterator'ler ile loop'lar arasinda performans farki yoktur
+4)  Iterator'ler bir collection'dan eleman silme ve bir collection'daki elemani degistirme konusunda daha basarilidir
+5) Iki tip iterator vardir:
+    a) Iterator:
+        Bu sadece eleman silmede kullanilir, eleman eklemek veya elemani degistirmek mumkun degildir
+    b) ListIterator:
+        Bu eleman silebilir, ekleyebilir ve degistirebilir
+    Not:
+    Iterator, sadece soldan saga (ilk elemandan son elemana) calisir
+    ListIterator iki yonlu calisabilir
+//hasNext() : Koleksiyonun bir sonraki elemaninin olup olmadigini kontrol eder(boolean)
+//next() : Pointer'i bir sonraki elemanin onune konumlandirir ve pointer'in atladigi elemani verir
+//remove() : Pointer'in atladigi elemani siler
+while (myItr.hasNext()) { //en basa konumlanan pointer'dan sonra eleman var mi diye bakar.
+//            myItr.next(); //pointer'i bir sonraki elemanin onune alir ve atladigi elemani verir
+//            myItr.remove(); //next()'in atladigi elemani siler
+//        System.out.println(myList); //[]
+//--------------------
+/*Lambda ifadeleri, Java 8 ile birlikte tanıtılan ve fonksiyonel(methodsal) programlamayı
+kolaylaştırmak için kullanılan bir özelliktir.
 
-
-
-CHATGPTNOTU:
-//OOP (Object Oriented Programming - Nesne Tabanlı Programlama)
-    //Gerçek hayatta gördüğümüz birçok Object’in (nesnenin) bilgisayar ortamına aktarılma şeklidir.
-    //Yani bir object’in rengi, durumu, ismi, üretim yılı gibi birçok özelliklerin bilgisayar
-    // ortamında gösterilmesi buna örnek olarak verilebilir.
-    //-------------------------
-    /*Object Yönelimli Programlamanın Faydaları:
-    1) Object oluşturma bir Class içerisinde toplanır ve tüm projelerde kullanılabilirliğe olanak sağlar.(String gibi)
-    2) Class'larin 1 kez oluşturulması sayesinde uzun kodları tekrardan yazmak yerine kısa kodlamalar
-    ile çalıştırılabilir. Substring() method'u 1 kere yazilmis ama surekli kullanabiliyoruz.
-    3) Uzun kodların tekrar yazılmasının engellenmesi sayesinde geliştirme süreci kısalır.
-    4) Object'ler birbirinden bağımsız olduğundan bilgi gizliliği konusunda avantaj sağlar.
-    5) Class'lar sayesinde tüm projelerde değişiklik yapmak yerine tek bir class' ta değişiklik
-    yapılıp tüm projelerde çalışması sağlanır. Bu zaman kaybını büyük ölçüde azaltır.*/
-
-    //-------------------------
-    /* OOP'leri 4 temel özellikte inceleyebiliriz.
-    1. Inheritance - Miras Alma
-    2. Polymorphism - Çok Biçimlilik
-    3. Encapsulation - Kapsülleme
-    4. Abstraction - Soyutlama
-    */
-    /*1.Inheritance, OOP'nin dort temel ozelliginin 1.sidir.
-    Ozellikleri bir class'tan diğer class'lara alan bir kavramdır.
-    */
-    /*Bunun Java daki karsiligi sudur: Siz bir class olusturacaksiniz ama daha once olusturulmus
-    bir class sizin istediginiz ozelliklerin bircogunu kapsiyor.
-    O zaman direkt yeni olusturdugunuz classi, ozelliklerini kullanmak istediginiz classa 'child' yapmalisiniz.
-    Bunu da 'extends' keyword'unu kullanarak yapiyoruz.*/
-    /*
-    Inheritance'in Faydalari nelerdir?
-    1) Kodun yeniden kullanılmasına yardımcı olur.
-    2) Ana kodun tekrar yazılmasına gerek olmadığı için, daha az kod yazarak, zamandan ve
-    emekten tasarruf sağlayabiliriz.
-    3) Kolayca update yapabiliriz.
-    4) Class'lari kuculturuz.
-    5) Daha az geliştirme ve bakım maliyetine yol açar.
-    */
-Java’da final class oluşturmanın belirli mantıksal sebepleri vardır ve bu genellikle bazı durumlarda avantajlı olabilir. OOP (nesne yönelimli programlama) prensipleri bağlamında bir sınıfı final yapmanın temel amacı, o sınıfın miras alınmasını (inheritance) engellemektir. İşte final class oluşturmanın mantıklı olduğu bazı senaryolar:
-1. Güvenlik ve Dış Etkileşimleri Kısıtlama:
-Bir sınıfın işlevselliğini miras alarak değiştirilmesini istemiyorsanız, sınıfı final yapabilirsiniz. Bu özellikle güvenlik açısından önemli olabilir. Final class, başka sınıflar tarafından genişletilemediği için, o sınıfın davranışını değiştirme veya kötüye kullanma riskini ortadan kaldırır.
-2. Performans Optimizasyonu:
-JVM (Java Virtual Machine), final olarak işaretlenmiş sınıfları daha kolay optimize edebilir. Çünkü JVM, bu sınıfın miras alınamayacağını bildiği için bazı runtime kontrollerini atlayabilir ve doğrudan daha hızlı işlem yapabilir.
-3. Tasarım Kararı:
-Bazı sınıfların tasarımsal olarak değiştirilmemesi gerektiğini düşündüğünüzde de bu yaklaşımı kullanabilirsiniz. Örneğin, String sınıfı Java’da final bir sınıftır. Bunun nedeni, String’in immutable (değişmez) olması ve davranışının tüm sistemde aynı kalmasını istemeleridir.
-4. Kodun Karışıklığını Önlemek:
-Bir sınıfın çok fazla genişletilip farklı yerlerde farklı şekillerde davranışlar kazanmasını istemediğiniz durumlarda final sınıf kullanmak mantıklıdır. Bu sayede kodun yönetimini ve bakımını kolaylaştırabilirsiniz.
-Ne Zaman Kullanılmamalı?
-Final sınıfları, yalnızca yukarıdaki gibi geçerli sebepler olduğunda kullanmak mantıklıdır. Eğer sınıfın genişletilmesi gerektiğini düşünüyorsanız veya gelecekte esneklik sağlamasını istiyorsanız, sınıfı final yapmamak daha iyi olabilir. Çok sık final class kullanmak, OOP’nin genişletilebilirlik özelliğini kısıtlar ve yazılım tasarımını olumsuz etkileyebilir.
-Sonuç olarak, Java’da final class kullanımı, sınıfın genişletilmesinin sakıncalı olduğu veya özel güvenlik/performans ihtiyaçları doğduğunda mantıklıdır. Ancak gereksiz kullanımı, kodun esnekliğini azaltabilir.
---------------------------------------------------------------------------------------------------------------------------------------
-//SORU : Bir class'ın parent class olmasına engel durumlar?
-//Yapıcı method = Constructor
-//1. final Anahtar Kelimesi:
-//Bir sınıf final olarak tanımlanmışsa, bu sınıf başka sınıflar tarafından miras alınamaz. Bu, sınıfın alt sınıf oluşturulmasını tamamen engeller.
-Örnek:
-final class A
-{
-    // Final sınıf
-}
-class B extends A
-{  // HATA: A sınıfı final olduğu için miras alınamaz.
-    // Hata alırız
-}
-//-----------------------------------------
-//2. private Yapıcı Metotlar (Constructors):
-//Bir sınıfın yapıcı metotları private olarak tanımlanırsa, o sınıfın dışarıdan bir alt sınıfı oluşturulamaz.
-//Çünkü bir sınıfın alt sınıfını oluşturmak için üst sınıfın yapıcı metotlarına erişmek gerekir.
-//Eğer bu yapıcı metot private ise, bu sınıfın miras alınması engellenmiş olur.
-Örnek:
-class A
-{
-    private A()
-    {
-        // Yapıcı metot private
-    }
-}
-class B extends A
-{  // HATA: A sınıfının yapıcı metodu private olduğu için miras alınamaz.
-    // Hata alırız
-}
-//--------------------------------------
-//3. static Sınıflar (İç Sınıflar İçin):
-//Bir sınıf static olarak tanımlanamaz, ancak bir sınıfın içindeki alt sınıf static olabilir.
-//Statik iç sınıflar, dış sınıfa bağımlı olmadan var olabilir. Ancak, statik sınıflar bağımsız sınıf
-//olmadıkları için başka sınıflar tarafından miras alınamazlar.
-Örnek:
-class Outer {
-    static class Inner    {
-        // Statik iç sınıf
-    }
-}
-class Child extends Outer.Inner
-{  // HATA: Statik sınıf miras alınamaz.
-    // Hata alırız
-}
-//---------------------------------------
-//4. Soyut Sınıfın Yapıcı Metodu private:
-//Bir sınıf abstract (soyut) olarak tanımlansa bile, yapıcı metodu private yapılırsa miras alınamaz.
-//Bu çok nadiren kullanılan bir durumdur.
-Örnek:
-abstract class A
-{
-    private A()
-    {
-        // Private yapıcı
-    }
-}
-class B extends A
-{  // HATA: A'nın yapıcı metodu private olduğu için miras alınamaz.
-    // Hata alırız
-}
-//------------------
-//5. Final Metotlar:
-//Bir sınıf miras alınabilir olsa bile, metotlardan bazıları final olarak tanımlanırsa bu metotlar alt sınıflar
-//tarafından override edilemez. Yani, sınıf miras alınabilir, ancak final metotlar değiştirilemez.
-Örnek:
-class A
-{
-    final void show()
-    {
-        System.out.println("A sınıfı");
-    }
-}
-class B extends A
-{
-    // show() metodu override edilemez
-    // Hata verir
-}
-Bu durumlar, bir sınıfın ya da metotlarının başka sınıflar tarafından miras alınmasını ve değiştirilmesini engeller.
+Lambda ifadelerinin genel avantajları:
+1- Daha az kod yazma: Lambdalar, daha az ve daha okunabilir kod yazmanızı sağlar.
+2- Fonksiyonel programlama: Java'nın fonksiyonel programlama özelliklerini kullanmanıza yardımcı olur.
+3- İsimsizdir: Lambda ifadeleri, bir isme sahip değildir.(method ismi yoktur)
+4- Tek bir ifade içerebilir: Lambda ifadeleri, bir veya daha fazla işlem gerçekleştiren tek
+bir ifade içerebilir.
+5- Bir veya daha fazla parametre alabilir*/
+//---------------
+ /*1) Lambda Functional Programming'dir, digeri "Structured Programming" dir
+Structured Programming: Yapısal programlama, programların belirli yapılar veya kontrol yapıları
+(örneğin döngüler, şartlı ifadeler) kullanılarak yazılmasını teşvik eden bir programlamadir.
+2) Functional programming, Collection'lar ve Array’ler ile yaygin olarak kullanilir.
+(Map'lerde direkt kullanilmaz
+entrySet ile Set'e cevrilirse kullanilabilir)*/
+// set(E e): Koleksiyonun geçerli elemanını değiştirir.
+//stream() metodu, koleksiyonları bir akışa (stream) dönüştürerek üzerinde işlem yapmayı sağlar.
+//Akışın (stream) adı, verinin bir kaynaktan hedefe doğru "akmasını" ifade eder.
+//Stream API'si ile birlikte sıkça kullanılan bazı metodlar şunlardır:
+//1) filter(): Koşulu karşılayan elemanları filtreler.
+//map(): Elemanları dönüştürmek için kullanılır.
+ı ve değiştirilmesini engeller.
